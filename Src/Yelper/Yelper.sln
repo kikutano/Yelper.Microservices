@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{C7D5043E-1B64-4238-87C3-226BCE4F1227}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{4027EC8C-7A44-4C81-A6DE-47DE5F2EABDB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Admin", "Admin", "{95AEDABC-85F4-4CC6-83C1-8B0D5F936AB1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{B64C5C5A-8FEA-4BFE-B21E-B8564C29451E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reading", "Reading", "{08AB57A1-DAB9-4341-8EBC-70CED487A41D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Writing", "Writing", "{C7FA2D4C-C614-412C-BE15-20EEC520C8EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.API", "Services\Identity\Identity.API\Identity.API.csproj", "{D7147688-61EC-4905-8464-8D37CF0B6A7A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7147688-61EC-4905-8464-8D37CF0B6A7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7147688-61EC-4905-8464-8D37CF0B6A7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7147688-61EC-4905-8464-8D37CF0B6A7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7147688-61EC-4905-8464-8D37CF0B6A7A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4027EC8C-7A44-4C81-A6DE-47DE5F2EABDB} = {C7D5043E-1B64-4238-87C3-226BCE4F1227}
+		{95AEDABC-85F4-4CC6-83C1-8B0D5F936AB1} = {C7D5043E-1B64-4238-87C3-226BCE4F1227}
+		{B64C5C5A-8FEA-4BFE-B21E-B8564C29451E} = {C7D5043E-1B64-4238-87C3-226BCE4F1227}
+		{08AB57A1-DAB9-4341-8EBC-70CED487A41D} = {C7D5043E-1B64-4238-87C3-226BCE4F1227}
+		{C7FA2D4C-C614-412C-BE15-20EEC520C8EB} = {C7D5043E-1B64-4238-87C3-226BCE4F1227}
+		{D7147688-61EC-4905-8464-8D37CF0B6A7A} = {B64C5C5A-8FEA-4BFE-B21E-B8564C29451E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {779B06E6-8E8A-49DB-B03C-8487C9BB72B1}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Src/Yelper/.vs/Yelper
+/.vs
+/Src/Yelper/Services/Identity/Identity.API/bin/Debug/net7.0
+/Src/Yelper/Services/Identity/Identity.API/obj
