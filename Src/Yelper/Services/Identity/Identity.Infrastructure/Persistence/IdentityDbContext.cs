@@ -1,7 +1,7 @@
 ﻿using Identity.Domain.AggregatesModel.UserAggregate;
 using Microsoft.EntityFrameworkCore;
 
-namespace Identity.Infrastructure;
+namespace Identity.Infrastructure.Persistence;
 
 public class IdentityDbContext : DbContext
 {
