@@ -6,3 +6,9 @@
 /.vs
 /Src/Yelper/Services/Identity/Identity.API/bin/Debug/net7.0
 /Src/Yelper/Services/Identity/Identity.API/obj
+/Src/Yelper/Services/Identity/Identity.Application/obj
+/Src/Yelper/Services/Identity/Identity.Contracts/obj
+/Src/Yelper/Services/Identity/Identity.Domain/obj
+/Src/Yelper/Services/Identity/Identity.Infrastructure/obj
+/Src/Yelper/Common/DomainDrivenDesign/DomainDrivenDesign/obj
+/Src/Yelper/.vs/ProjectEvaluation
