@@ -1,5 +1,6 @@
 ﻿using ErrorOr;
-using Identity.Application.Common.Interfaces.Persistence;
+using Identity.Application.Common.Persistence;
+using Identity.Application.Common.Persistence.QueryExtensions.Users;
 using Identity.Application.Users.Common;
 using Identity.Domain.AggregatesModel.SecurityAggregate;
 using Identity.Domain.AggregatesModel.UserAggregate;
@@ -10,20 +11,17 @@ namespace Identity.Application.Users.Commands;
 internal sealed class CreateUserCommandHandler
     : IRequestHandler<CreateUserCommand, ErrorOr<UserCreatedResult>>
 {
-    public readonly IUserRepository _userRepository;
-    public readonly ISecurityRepository _securityRepository;
+    private readonly IdentityDbContext _dbContext;
 
-    public CreateUserCommandHandler(
-        IUserRepository userRepository, ISecurityRepository securityRepository)
+    public CreateUserCommandHandler(IdentityDbContext dbContext)
     {
-        _userRepository = userRepository;
-        _securityRepository = securityRepository;
+        _dbContext = dbContext;
     }
 
     public async Task<ErrorOr<UserCreatedResult>> Handle(
         CreateUserCommand request, CancellationToken cancellationToken)
     {
-        if (await _userRepository.ExistAsync(request.Identifier, cancellationToken))
+        if (await _dbContext.Users.ExistAsync(request.Identifier, cancellationToken))
         {
             return Errors.User.IdentifierDuplicate(request.Identifier);
         }
@@ -42,9 +40,9 @@ internal sealed class CreateUserCommandHandler
             return security.Errors.First();
         }
 
-        await _userRepository.CreateAsync(user.Value, cancellationToken);
-        await _securityRepository.CreateAsync(security.Value, cancellationToken);
-        await _userRepository.SaveChangesAsync();
+        await _dbContext.Users.AddAsync(user.Value, cancellationToken);
+        await _dbContext.Securities.AddAsync(security.Value, cancellationToken);
+        await _dbContext.SaveChangesAsync(cancellationToken);
 
         return new UserCreatedResult(user.Value, security.Value);
     }

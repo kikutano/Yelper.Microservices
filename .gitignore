@@ -12,3 +12,8 @@
 /Src/Yelper/Services/Identity/Identity.Infrastructure/obj
 /Src/Yelper/Common/DomainDrivenDesign/DomainDrivenDesign/obj
 /Src/Yelper/.vs/ProjectEvaluation
+/Src/Yelper/Common/DomainDrivenDesign/DomainDrivenDesign/bin/Debug/net7.0
+/Src/Yelper/Services/Identity/Identity.Application/bin/Debug/net7.0
+/Src/Yelper/Services/Identity/Identity.Contracts/bin/Debug/net7.0
+/Src/Yelper/Services/Identity/Identity.Domain/bin/Debug/net7.0
+/Src/Yelper/Services/Identity/Identity.Infrastructure/bin/Debug/net7.0
