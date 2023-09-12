@@ -17,3 +17,5 @@
 /Src/Yelper/Services/Identity/Identity.Contracts/bin/Debug/net7.0
 /Src/Yelper/Services/Identity/Identity.Domain/bin/Debug/net7.0
 /Src/Yelper/Services/Identity/Identity.Infrastructure/bin/Debug/net7.0
+/Src/Yelper/bin/Debug
+/Src/Yelper/obj

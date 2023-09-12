@@ -28,14 +28,14 @@ internal sealed class CreateUserCommandHandler
 
         var user = User.Create(request.Name, request.Identifier);
 
-        if (user.Errors.Any())
+        if (user.ErrorsOrEmptyList.Any())
         {
             return user.Errors.First();
         }
 
         var security = Security.Create(user.Value.Id);
 
-        if (security.Errors.Any())
+        if (security.ErrorsOrEmptyList.Any())
         {
             return security.Errors.First();
         }

@@ -15,19 +15,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reading", "Reading", "{08AB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Writing", "Writing", "{C7FA2D4C-C614-412C-BE15-20EEC520C8EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.API", "Services\Identity\Identity.API\Identity.API.csproj", "{D7147688-61EC-4905-8464-8D37CF0B6A7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.API", "Services\Identity\Identity.API\Identity.API.csproj", "{D7147688-61EC-4905-8464-8D37CF0B6A7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Application", "Services\Identity\Identity.Application\Identity.Application.csproj", "{8136C2D4-EE82-458C-9E07-79016D4C9C9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Application", "Services\Identity\Identity.Application\Identity.Application.csproj", "{8136C2D4-EE82-458C-9E07-79016D4C9C9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Infrastructure", "Services\Identity\Identity.Infrastructure\Identity.Infrastructure.csproj", "{4F34CCB0-700D-4A1E-BD0A-998F8C75A7E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Infrastructure", "Services\Identity\Identity.Infrastructure\Identity.Infrastructure.csproj", "{4F34CCB0-700D-4A1E-BD0A-998F8C75A7E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Domain", "Services\Identity\Identity.Domain\Identity.Domain.csproj", "{35F6B30E-7F78-4391-A9CE-2F65AB45C565}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Domain", "Services\Identity\Identity.Domain\Identity.Domain.csproj", "{35F6B30E-7F78-4391-A9CE-2F65AB45C565}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Contracts", "Services\Identity\Identity.Contracts\Identity.Contracts.csproj", "{958F5A37-05E7-4F54-A67D-573FE294430A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Contracts", "Services\Identity\Identity.Contracts\Identity.Contracts.csproj", "{958F5A37-05E7-4F54-A67D-573FE294430A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DomainDrivenDesign", "DomainDrivenDesign", "{E8C2BEEB-3035-4FA1-94E4-E0D15F948968}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainDrivenDesign", "Common\DomainDrivenDesign\DomainDrivenDesign\DomainDrivenDesign.csproj", "{548EF46B-77F9-4013-995B-FC167E923A86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainDrivenDesign", "Common\DomainDrivenDesign\DomainDrivenDesign\DomainDrivenDesign.csproj", "{548EF46B-77F9-4013-995B-FC167E923A86}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{636B631B-B881-4EBB-98CC-4A4957AA2507}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{548EF46B-77F9-4013-995B-FC167E923A86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{548EF46B-77F9-4013-995B-FC167E923A86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{548EF46B-77F9-4013-995B-FC167E923A86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{636B631B-B881-4EBB-98CC-4A4957AA2507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{636B631B-B881-4EBB-98CC-4A4957AA2507}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{636B631B-B881-4EBB-98CC-4A4957AA2507}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{636B631B-B881-4EBB-98CC-4A4957AA2507}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

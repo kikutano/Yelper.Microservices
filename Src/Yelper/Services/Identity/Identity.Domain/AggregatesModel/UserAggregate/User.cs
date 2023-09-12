@@ -13,6 +13,7 @@ public class User : Entity, IAggregateRoot
 
     protected User(string name, string identifier)
     {
+        Id = Guid.NewGuid();
         Name = name;
         Identifier = identifier;
         SubscriptionAt = DateTime.UtcNow;

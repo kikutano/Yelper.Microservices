@@ -29,10 +29,8 @@ public static class DependencyInjection
         services.AddDbContext<IdentityDbContext>(
             options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(configuration.GetConnectionString("db-docker"));
                 options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
             });
     }
-
-
 }
