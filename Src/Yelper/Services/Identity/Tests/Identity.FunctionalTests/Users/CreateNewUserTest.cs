@@ -1,4 +1,5 @@
-﻿using Identity.Contracts.Users;
+﻿using Identity.Application.Users.Commands;
+using Identity.Application.Users.Common;
 using Identity.FunctionalTests.Common;
 using System.Net;
 using Tests.Common.Networking;
@@ -19,25 +20,23 @@ public class CreateNewUserTest : IClassFixture<IdentityApiTestFixture>
     public async Task CreateNewUser_EnsureExistence()
     {
         //act
-        var request = new CreateUserRequest("johnmclean", "John McLean");
+        var request = new CreateUserCommand("johnmclean", "John McLean");
 
-        var response = await RestApiCaller
-            .PostAsync<UserCreatedDto>(Fixture.ApiClient, "api/v1/user", request);
-
-        //assert
-        Assert.Equal(HttpStatusCode.OK, response.Response.StatusCode);
-    }
-
-    [Fact]
-    public async Task CreateNewUser_EnsureExistence2()
-    {
         //arrange
-        var request = new CreateUserRequest("johnmclean", "John McLean");
+        var creationResponse = await RestApiCaller
+            .PostAsync<UserCreatedResult>(Fixture.ApiClient, "api/v1/user", request);
 
-        var response = await RestApiCaller
-            .PostAsync<UserCreatedDto>(Fixture.ApiClient, "api/v1/user", request);
+        var retrieveResponse = await RestApiCaller
+            .GetAsync<UserResult>(
+                Fixture.ApiClient,
+                $"api/v1/user/{creationResponse.Value.User.Identifier}");
 
         //assert
-        Assert.Equal(HttpStatusCode.OK, response.Response.StatusCode);
+        Assert.Equal(HttpStatusCode.OK, creationResponse.Response.StatusCode);
+        Assert.Equal(request.Name, creationResponse.Value.User.Name);
+        Assert.Equal(request.Identifier, creationResponse.Value.User.Identifier);
+
+        Assert.Equal(creationResponse.Value.User.Identifier, retrieveResponse.Value.Identifier);
+        Assert.Equal(creationResponse.Value.User.Name, retrieveResponse.Value.Name);
     }
 }

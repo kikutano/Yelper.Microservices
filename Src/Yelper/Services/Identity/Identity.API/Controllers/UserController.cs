@@ -1,7 +1,7 @@
 ﻿using ErrorOr;
 using Identity.Application.Users.Commands;
-using Identity.Contracts.Users;
-using MapsterMapper;
+using Identity.Application.Users.Common;
+using Identity.Application.Users.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -14,35 +14,41 @@ namespace Identity.API.Controllers;
 public class UserController : ApiController
 {
     private readonly IMediator _mediator;
-    private readonly IMapper _mapper;
 
-    public UserController(IMediator mediator, IMapper mapper)
+    public UserController(IMediator mediator)
     {
         _mediator = mediator;
-        _mapper = mapper;
     }
 
     [HttpPost]
-    [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(UserCreatedDto))]
+    [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(UserCreatedResult))]
     [SwaggerResponse((int)HttpStatusCode.BadRequest, Type = typeof(Error))]
     [SwaggerResponse((int)HttpStatusCode.Conflict, Type = typeof(Error))]
-    public async Task<IActionResult> Create(CreateUserRequest request)
+    public async Task<IActionResult> Create(CreateUserCommand request)
     {
-        var command = new CreateUserCommand(request.Name, request.Identifier);
-        var commandResult = await _mediator.Send(command);
+        var commandResult = await _mediator.Send(request);
 
         if (!commandResult.IsError)
         {
-            var userCreated = _mapper.Map<UserCreatedDto>(commandResult.Value);
-
             //_eventBus.Publish(new UserCreatedIntegrationEvent(
             //    UserId: userCreated.UserId,
             //    Identifier: userCreated.Identifier,
             //    Name: userCreated.Name));
 
-            return Ok(userCreated);
+            return Ok(commandResult.Value);
         }
 
         return Problem(commandResult.Errors);
+    }
+
+    [HttpGet]
+    [Route("{identifier}")]
+    [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(UserResult))]
+    [SwaggerResponse((int)HttpStatusCode.NotFound, Type = typeof(Error))]
+    public async Task<IActionResult> GetUserByIdentifier(string identifier)
+    {
+        var result = await _mediator.Send(new GetUserByIdentifierQuery(identifier));
+
+        return Ok(result.Value);
     }
 }

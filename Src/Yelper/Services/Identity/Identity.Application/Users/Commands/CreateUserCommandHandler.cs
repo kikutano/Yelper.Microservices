@@ -44,6 +44,12 @@ internal sealed class CreateUserCommandHandler
         await _dbContext.Securities.AddAsync(security.Value, cancellationToken);
         await _dbContext.SaveChangesAsync(cancellationToken);
 
-        return new UserCreatedResult(user.Value, security.Value);
+        return new UserCreatedResult(
+            new UserResult(
+                user.Value.Id,
+                user.Value.Identifier,
+                user.Value.Name,
+                user.Value.AvatarUrl),
+                security.Value.AccessCode);
     }
 }

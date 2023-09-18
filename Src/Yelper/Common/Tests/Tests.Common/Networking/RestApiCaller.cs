@@ -79,7 +79,7 @@ public static class RestApiCaller
         var content = await response.Content.ReadAsStringAsync();
         var apiResult = JsonConvert.DeserializeObject<T>(content);
 
-        return new RestApiResponse<T>(apiResult, response);
+        return new RestApiResponse<T>(apiResult!, response);
     }
 
     public static async Task<RestApiResponse> GetAsync(

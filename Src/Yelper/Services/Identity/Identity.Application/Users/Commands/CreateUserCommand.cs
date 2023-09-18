@@ -4,4 +4,4 @@ using MediatR;
 
 namespace Identity.Application.Users.Commands;
 
-public record CreateUserCommand(string Name, string Identifier) : IRequest<ErrorOr<UserCreatedResult>>;
+public record CreateUserCommand(string Identifier, string Name) : IRequest<ErrorOr<UserCreatedResult>>;

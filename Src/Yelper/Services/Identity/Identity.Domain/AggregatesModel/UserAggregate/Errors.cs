@@ -10,8 +10,8 @@ public static partial class Errors
             code: "User.IdentifierAlreadyUsed",
             description: $"The identifier {value} is already used!");
 
-        public static Error UserNameNotFound(string value) => Error.NotFound(
-            code: "Security.UserNameNotFound",
+        public static Error IdentifierNotFound(string value) => Error.NotFound(
+            code: "User.IdentifierNotFound",
             description: $"The identifier {value} is not found!");
     }
 }

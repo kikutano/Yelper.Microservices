@@ -1,12 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Identity.Application.Users.Common;
 
-namespace Identity.Application.Users.Common
-{
-    internal class UserResult
-    {
-    }
-}
+public record UserResult(Guid Id, string Identifier, string Name, string AvatarUrl);
