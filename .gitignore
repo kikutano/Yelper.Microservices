@@ -19,3 +19,9 @@
 /Src/Yelper/Services/Identity/Identity.Infrastructure/bin/Debug/net7.0
 /Src/Yelper/bin/Debug
 /Src/Yelper/obj
+/Src/Yelper/Tests/Identity.FunctionalTests/obj
+/Src/Yelper/Common/Tests/Tests.Common/bin/Debug/net7.0
+/Src/Yelper/Common/Tests/Tests.Common/obj
+/Src/Yelper/Services/Identity/Tests/Identity.FunctionalTests/bin/Debug/net7.0
+/Src/Yelper/Services/Identity/Tests/Identity.FunctionalTests/obj/Debug/net7.0
+/Src/Yelper/Services/Identity/Tests/Identity.FunctionalTests/obj
