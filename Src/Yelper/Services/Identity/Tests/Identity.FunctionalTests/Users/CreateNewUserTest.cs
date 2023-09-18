@@ -29,14 +29,14 @@ public class CreateNewUserTest : IClassFixture<IdentityApiTestFixture>
         var retrieveResponse = await RestApiCaller
             .GetAsync<UserResult>(
                 Fixture.ApiClient,
-                $"api/v1/user/{creationResponse.Value.User.Identifier}");
+                $"api/v1/user/{creationResponse.Value.User.At}");
 
         //assert
         Assert.Equal(HttpStatusCode.OK, creationResponse.Response.StatusCode);
         Assert.Equal(request.Name, creationResponse.Value.User.Name);
-        Assert.Equal(request.Identifier, creationResponse.Value.User.Identifier);
+        Assert.Equal(request.At, creationResponse.Value.User.At);
 
-        Assert.Equal(creationResponse.Value.User.Identifier, retrieveResponse.Value.Identifier);
+        Assert.Equal(creationResponse.Value.User.At, retrieveResponse.Value.At);
         Assert.Equal(creationResponse.Value.User.Name, retrieveResponse.Value.Name);
     }
 }

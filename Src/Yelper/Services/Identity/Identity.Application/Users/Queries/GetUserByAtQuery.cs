@@ -4,4 +4,4 @@ using MediatR;
 
 namespace Identity.Application.Users.Queries;
 
-public record GetUserByIdentifierQuery(string Identifier) : IRequest<ErrorOr<UserResult>>;
+public record GetUserByAtQuery(string At) : IRequest<ErrorOr<UserResult>>;

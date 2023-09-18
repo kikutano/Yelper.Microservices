@@ -21,12 +21,12 @@ internal sealed class CreateUserCommandHandler
     public async Task<ErrorOr<UserCreatedResult>> Handle(
         CreateUserCommand request, CancellationToken cancellationToken)
     {
-        if (await _dbContext.Users.ExistAsync(request.Identifier, cancellationToken))
+        if (await _dbContext.Users.ExistAsync(request.At, cancellationToken))
         {
-            return Errors.User.IdentifierDuplicate(request.Identifier);
+            return Errors.User.AtDuplicate(request.At);
         }
 
-        var user = User.Create(request.Name, request.Identifier);
+        var user = User.Create(request.Name, request.At);
 
         if (user.ErrorsOrEmptyList.Any())
         {
@@ -46,8 +46,7 @@ internal sealed class CreateUserCommandHandler
 
         return new UserCreatedResult(
             new UserResult(
-                user.Value.Id,
-                user.Value.Identifier,
+                user.Value.At,
                 user.Value.Name,
                 user.Value.AvatarUrl),
                 security.Value.AccessCode);

@@ -42,12 +42,12 @@ public class UserController : ApiController
     }
 
     [HttpGet]
-    [Route("{identifier}")]
+    [Route("{at}")]
     [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(UserResult))]
     [SwaggerResponse((int)HttpStatusCode.NotFound, Type = typeof(Error))]
-    public async Task<IActionResult> GetUserByIdentifier(string identifier)
+    public async Task<IActionResult> GetUserByAt(string at)
     {
-        var result = await _mediator.Send(new GetUserByIdentifierQuery(identifier));
+        var result = await _mediator.Send(new GetUserByAtQuery(at));
 
         return Ok(result.Value);
     }
