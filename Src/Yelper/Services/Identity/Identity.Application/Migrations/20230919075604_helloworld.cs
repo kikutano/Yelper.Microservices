@@ -6,19 +6,47 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Identity.Application.Migrations
 {
     /// <inheritdoc />
-    public partial class followers : Migration
+    public partial class helloworld : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Securities",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AccessCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Securities", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    At = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    AvatarUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Bio = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SubscriptionAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Followers",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Identifier = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FollowedByIdentifier = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FollowedByUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Following = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -38,9 +66,8 @@ namespace Identity.Application.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Identifier = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FollowingIdentifier = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FollowingUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -63,6 +90,11 @@ namespace Identity.Application.Migrations
                 name: "IX_Followings_UserId",
                 table: "Followings",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_At",
+                table: "Users",
+                column: "At");
         }
 
         /// <inheritdoc />
@@ -73,6 +105,12 @@ namespace Identity.Application.Migrations
 
             migrationBuilder.DropTable(
                 name: "Followings");
+
+            migrationBuilder.DropTable(
+                name: "Securities");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

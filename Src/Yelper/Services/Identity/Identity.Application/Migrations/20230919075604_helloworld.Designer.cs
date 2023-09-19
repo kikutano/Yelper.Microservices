@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Identity.Application.Migrations
 {
     [DbContext(typeof(IdentityDbContext))]
-    [Migration("20230918160308_add-id-and-at")]
-    partial class addidandat
+    [Migration("20230919075604_helloworld")]
+    partial class helloworld
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -118,8 +118,6 @@ namespace Identity.Application.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("At");
-
-                    SqlServerIndexBuilderExtensions.IsClustered(b.HasIndex("At"));
 
                     b.ToTable("Users");
                 });

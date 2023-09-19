@@ -30,6 +30,7 @@
     <Folder Include="Followers\Commands\" />
     <Folder Include="Followings\Common\" />
     <Folder Include="Followings\Queries\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

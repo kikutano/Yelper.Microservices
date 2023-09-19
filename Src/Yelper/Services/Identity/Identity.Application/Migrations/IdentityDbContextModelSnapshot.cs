@@ -116,8 +116,6 @@ namespace Identity.Application.Migrations
 
                     b.HasIndex("At");
 
-                    SqlServerIndexBuilderExtensions.IsClustered(b.HasIndex("At"));
-
                     b.ToTable("Users");
                 });
 

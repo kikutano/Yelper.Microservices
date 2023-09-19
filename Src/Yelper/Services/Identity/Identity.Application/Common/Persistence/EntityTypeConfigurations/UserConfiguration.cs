@@ -11,7 +11,6 @@ internal class UserConfiguration : IEntityTypeConfiguration<User>
         builder
             .HasKey(x => x.Id);
         builder
-            .HasIndex(x => x.At)
-            .IsClustered();
+            .HasIndex(x => x.At);
     }
 }
