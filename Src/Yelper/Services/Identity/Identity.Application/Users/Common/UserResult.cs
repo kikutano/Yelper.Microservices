@@ -1,3 +1,3 @@
 ﻿namespace Identity.Application.Users.Common;
 
-public record UserResult(string At, string Name, string AvatarUrl);
+public record UserResult(Guid UserId, string At, string Name, string AvatarUrl);

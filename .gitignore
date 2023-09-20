@@ -25,3 +25,5 @@
 /Src/Yelper/Services/Identity/Tests/Identity.FunctionalTests/bin/Debug/net7.0
 /Src/Yelper/Services/Identity/Tests/Identity.FunctionalTests/obj/Debug/net7.0
 /Src/Yelper/Services/Identity/Tests/Identity.FunctionalTests/obj
+/Src/Yelper/Common/Services/AuthService/bin/Debug/net7.0
+/Src/Yelper/Common/Services/AuthService/obj

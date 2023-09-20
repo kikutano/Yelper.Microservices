@@ -23,10 +23,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Services\AuthService\AuthService.csproj" />
     <ProjectReference Include="..\Identity.Domain\Identity.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Auth\Queries\" />
     <Folder Include="Followers\Commands\" />
     <Folder Include="Followings\Common\" />
     <Folder Include="Followings\Queries\" />

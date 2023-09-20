@@ -7,11 +7,11 @@ using Tests.Common.Networking;
 namespace Identity.FunctionalTests.Users;
 
 [Collection(nameof(ShareSameDatabaseInstance))]
-public class CreateNewUserTest : IClassFixture<IdentityApiTestFixture>
+public class CreateNewUser_Tests : IClassFixture<IdentityApiTestFixture>
 {
     private readonly IdentityApiTestFixture Fixture;
 
-    public CreateNewUserTest(IdentityApiTestFixture fixture)
+    public CreateNewUser_Tests(IdentityApiTestFixture fixture)
     {
         Fixture = fixture;
     }

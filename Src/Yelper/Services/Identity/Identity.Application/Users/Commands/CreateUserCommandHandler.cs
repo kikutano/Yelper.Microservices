@@ -5,6 +5,7 @@ using Identity.Application.Users.Common;
 using Identity.Domain.AggregatesModel.SecurityAggregate;
 using Identity.Domain.AggregatesModel.UserAggregate;
 using MediatR;
+using ErrorsUser = Identity.Domain.AggregatesModel.UserAggregate.Errors;
 
 namespace Identity.Application.Users.Commands;
 
@@ -23,7 +24,7 @@ internal sealed class CreateUserCommandHandler
     {
         if (await _dbContext.Users.ExistAsync(request.At, cancellationToken))
         {
-            return Errors.User.AtDuplicate(request.At);
+            return ErrorsUser.User.AtDuplicate(request.At);
         }
 
         var user = User.Create(request.Name, request.At);
@@ -46,6 +47,7 @@ internal sealed class CreateUserCommandHandler
 
         return new UserCreatedResult(
             new UserResult(
+                user.Value.Id,
                 user.Value.At,
                 user.Value.Name,
                 user.Value.AvatarUrl),

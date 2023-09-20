@@ -7,8 +7,8 @@ namespace Identity.API.Controllers;
 [ApiController]
 public class ApiController : Controller
 {
-    protected string RequesterAt =>
-        User.Claims.Where(x => x.Type == "at").ToList()[0].Value;
+    protected Guid RequesterUserId =>
+        Guid.Parse(User.Claims.Where(x => x.Type == "id").ToList()[0].Value);
 
     protected IActionResult Problem(List<Error> errors)
     {

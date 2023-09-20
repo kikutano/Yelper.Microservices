@@ -6,7 +6,7 @@ namespace Identity.Application.Common.Persistence.QueryExtensions.Users;
 public static class FromAtToIdExtension
 {
     public async static Task<Guid> FromAtToIdAsync(
-        this DbSet<User> users, string at, CancellationToken cancellationToken)
+        this DbSet<User> users, string at, CancellationToken cancellationToken = default)
     {
         return await users
             .Where(x => x.At == at)

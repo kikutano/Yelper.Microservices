@@ -24,6 +24,7 @@ public class GetUserByIdAtQueryHandler
             .Users
             .Where(user => user.At == request.At)
             .Select(user => new UserResult(
+                user.Id,
                 user.At,
                 user.Name,
                 user.AvatarUrl
