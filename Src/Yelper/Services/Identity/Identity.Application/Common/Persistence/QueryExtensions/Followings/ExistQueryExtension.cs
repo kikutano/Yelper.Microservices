@@ -12,7 +12,7 @@ public static class ExistQueryExtension
         CancellationToken cancellationToken)
     {
         return await followings
-            .Where(user => user.Id == fromUserId)
+            .Where(user => user.UserId == fromUserId)
             .Where(user => user.FollowingUserId == toUserId)
             .AnyAsync(cancellationToken);
     }

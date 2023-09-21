@@ -34,16 +34,18 @@ public class FollowingController : ApiController
            commandResult => Ok(), errors => Problem(errors));
     }
 
-    //[HttpDelete]
-    //[SwaggerResponse((int)HttpStatusCode.OK)]
-    //[SwaggerResponse((int)HttpStatusCode.BadRequest, Type = typeof(Error))]
-    //public async Task<IActionResult> UnFollowUser(FollowUserCommand request)
-    //{
-    //    var commandResult = await _mediator.Send(request);
+    [HttpDelete]
+    [Route("{userId}")]
+    [SwaggerResponse((int)HttpStatusCode.OK)]
+    [SwaggerResponse((int)HttpStatusCode.NotFound, Type = typeof(Error))]
+    public async Task<IActionResult> UnFollowUser(Guid userId)
+    {
+        var commandRequest = new UnfollowUserCommand(RequesterUserId, userId);
+        var commandResult = await _mediator.Send(commandRequest);
 
-    //    return commandResult.Match(
-    //       commandResult => Ok(), errors => Problem(errors));
-    //}
+        return commandResult.Match(
+           commandResult => Ok(), errors => Problem(errors));
+    }
 
     [HttpGet]
     [Authorize]

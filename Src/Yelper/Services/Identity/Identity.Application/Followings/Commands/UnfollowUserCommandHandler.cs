@@ -2,32 +2,25 @@
 using Identity.Application.Common.Persistence;
 using Identity.Application.Common.Persistence.QueryExtensions.Followings;
 using Identity.Application.Common.Persistence.QueryExtensions.Users;
-using Identity.Domain.AggregatesModel.FollowerAggregate;
-using Identity.Domain.AggregatesModel.FollowingAggregate;
 using Identity.Domain.AggregatesModel.UserAggregate;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Identity.Application.Followings.Commands;
 
-public sealed class FollowUserCommandHandler : IRequestHandler<FollowUserCommand, ErrorOr<Unit>>
+internal sealed class UnfollowUserCommandHandler : IRequestHandler<UnfollowUserCommand, ErrorOr<Unit>>
 {
     private readonly IdentityDbContext _dbContext;
 
-    //togliere da qui
-    //private readonly IValidator<FollowUserCommand> _commandValidator;
-
-    public FollowUserCommandHandler(
-        IdentityDbContext dbContext/*, IValidator<FollowUserCommand> validator*/)
+    public UnfollowUserCommandHandler(IdentityDbContext dbContext)
     {
         _dbContext = dbContext;
-        //_commandValidator = validator;
     }
 
     public async Task<ErrorOr<Unit>> Handle(
-        FollowUserCommand request, CancellationToken cancellationToken)
+        UnfollowUserCommand request, CancellationToken cancellationToken)
     {
         //TODO: Add validators!
-
         var validationResult = await ValidateCommandAsync(request, cancellationToken);
 
         if (validationResult.IsError)
@@ -35,18 +28,19 @@ public sealed class FollowUserCommandHandler : IRequestHandler<FollowUserCommand
             return validationResult.Errors.FirstOrDefault();
         }
 
-        var following = Following.Create(request.FromUserId, request.ToUserId);
-        var follower = Follower.Create(request.ToUserId, request.FromUserId);
+        var followingId = await _dbContext
+            .Followings
+            .Where(x => x.UserId == request.FromUserId)
+            .Where(x => x.FollowingUserId == request.ToUserId)
+            .ExecuteDeleteAsync(cancellationToken);
 
-        await _dbContext.Followings.AddAsync(following.Value, cancellationToken);
-        await _dbContext.Followers.AddAsync(follower.Value, cancellationToken);
         await _dbContext.SaveChangesAsync(cancellationToken);
 
         return new ErrorOr<Unit>();
     }
 
     private async Task<ErrorOr<bool>>
-        ValidateCommandAsync(FollowUserCommand request, CancellationToken cancellationToken)
+        ValidateCommandAsync(UnfollowUserCommand request, CancellationToken cancellationToken)
     {
         if (!await _dbContext.Users.ExistAsync(request.FromUserId, cancellationToken))
         {
@@ -58,11 +52,11 @@ public sealed class FollowUserCommandHandler : IRequestHandler<FollowUserCommand
             return Errors.User.UserIdNotFound(request.ToUserId);
         }
 
-        if (await _dbContext
+        if (!await _dbContext
                 .Followings
                 .ExistAsync(request.FromUserId, request.ToUserId, cancellationToken))
         {
-            return Error.Conflict($"User {request.FromUserId} already follow {request.ToUserId}");
+            return Error.Conflict($"User {request.FromUserId} already not follow {request.ToUserId}");
         }
 
         return true;
