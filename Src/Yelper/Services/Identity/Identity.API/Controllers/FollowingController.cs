@@ -1,7 +1,9 @@
 ﻿using ErrorOr;
 using Identity.Application.Followings.Commands;
+using Identity.Application.Followings.Queries;
 using Identity.Contracts.Followings;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Net;
@@ -20,6 +22,7 @@ public class FollowingController : ApiController
     }
 
     [HttpPost]
+    [Authorize]
     [SwaggerResponse((int)HttpStatusCode.OK)]
     [SwaggerResponse((int)HttpStatusCode.BadRequest, Type = typeof(Error))]
     public async Task<IActionResult> FollowUser(FollowUserRequest request)
@@ -41,4 +44,16 @@ public class FollowingController : ApiController
     //    return commandResult.Match(
     //       commandResult => Ok(), errors => Problem(errors));
     //}
+
+    [HttpGet]
+    [Authorize]
+    [Route("{at}")]
+    [SwaggerResponse((int)HttpStatusCode.OK)]
+    [SwaggerResponse((int)HttpStatusCode.NotFound, Type = typeof(Error))]
+    public async Task<IActionResult> GetFollowings(string at)
+    {
+        var followings = await _mediator.Send(new GetUserFollowingsQuery(at));
+
+        return Ok(followings.Value);
+    }
 }

@@ -1,5 +1,6 @@
 #Todo:
 - How to make Functional Test as fast as I can?
+	- Why InitializeAsync is calle twice?
 - Optimize identifier in Idendity.User table as clustered-index. 
 
 #Done:

@@ -4,6 +4,7 @@ using Identity.Application.Users.Commands;
 using Identity.Application.Users.Common;
 using Identity.FunctionalTests.Common;
 using System.Net;
+using System.Net.Http.Headers;
 using Tests.Common.Networking;
 
 namespace Identity.FunctionalTests.Auth;
@@ -11,11 +12,11 @@ namespace Identity.FunctionalTests.Auth;
 [Collection(nameof(ShareSameDatabaseInstance))]
 public class Auth_Tests : IClassFixture<IdentityApiTestFixture>
 {
-    private readonly IdentityApiTestFixture Fixture;
+    private readonly IdentityApiTestFixture _fixture;
 
     public Auth_Tests(IdentityApiTestFixture fixture)
     {
-        Fixture = fixture;
+        _fixture = fixture;
     }
 
     [Fact]
@@ -25,16 +26,23 @@ public class Auth_Tests : IClassFixture<IdentityApiTestFixture>
         var createJohnUserRequest = new CreateUserCommand("johnmclean", "John McLean");
 
         var createJohnUserResponse = await RestApiCaller
-            .PostAsync<UserCreatedResult>(Fixture.ApiClient, "api/v1/user", createJohnUserRequest);
+            .PostAsync<UserCreatedResult>(_fixture.ApiClient, "api/v1/user", createJohnUserRequest);
 
         //arrange
         var authRequest = new AuthRequestCommand("johnmclean", createJohnUserResponse.Value.AccessCode);
 
         var response = await RestApiCaller
-            .PostAsync<AuthRequestResult>(Fixture.ApiClient, $"api/v1/auth", authRequest);
+            .PostAsync<AuthRequestResult>(_fixture.ApiClient, $"api/v1/auth", authRequest);
+
+        _fixture.ApiClient.DefaultRequestHeaders.Authorization =
+            new AuthenticationHeaderValue("Bearer", response.Value.Token);
+
+        var imAuthorizedResponse = await RestApiCaller
+            .GetAsync(_fixture.ApiClient, $"api/v1/auth/im_authorized");
 
         //assert
         Assert.Equal(HttpStatusCode.OK, response.Response.StatusCode);
         Assert.NotNull(response.Value.Token);
+        Assert.Equal(HttpStatusCode.OK, imAuthorizedResponse.Response.StatusCode);
     }
 }

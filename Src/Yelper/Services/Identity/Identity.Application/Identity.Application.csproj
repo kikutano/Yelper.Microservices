@@ -30,8 +30,6 @@
   <ItemGroup>
     <Folder Include="Auth\Queries\" />
     <Folder Include="Followers\Commands\" />
-    <Folder Include="Followings\Common\" />
-    <Folder Include="Followings\Queries\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
 

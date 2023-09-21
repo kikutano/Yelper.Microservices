@@ -9,6 +9,7 @@ public class Following : Entity, IAggregateRoot
     public virtual Guid UserId { get; private set; }
     public virtual User User { get; private set; } = null!;
     public virtual Guid FollowingUserId { get; private set; }
+    public virtual User FollowingUser { get; private set; } = null!;
     public DateTime CreatedAt { get; private set; }
 
     protected Following(Guid userId, Guid followingUserId)

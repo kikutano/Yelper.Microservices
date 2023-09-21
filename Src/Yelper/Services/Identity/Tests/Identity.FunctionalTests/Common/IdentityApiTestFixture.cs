@@ -1,4 +1,8 @@
-﻿using Testcontainers.MsSql;
+﻿using Identity.Application.Auth.Commands;
+using Identity.Application.Auth.Common;
+using System.Net.Http.Headers;
+using Testcontainers.MsSql;
+using Tests.Common.Networking;
 
 namespace Identity.FunctionalTests.Common;
 
@@ -26,5 +30,16 @@ public class IdentityApiTestFixture : IAsyncLifetime
         await _msSqlContainer.StartAsync();
         await _identityApiFactory.InitializeAsync();
         ApiClient = _identityApiFactory.CreateClient();
+    }
+
+    public async Task Auth(string at, string accessCode)
+    {
+        var authRequest = new AuthRequestCommand(at, accessCode);
+
+        var response = await RestApiCaller
+            .PostAsync<AuthRequestResult>(ApiClient, $"api/v1/auth", authRequest);
+
+        ApiClient.DefaultRequestHeaders.Authorization =
+            new AuthenticationHeaderValue("Bearer", response.Value.Token);
     }
 }
