@@ -4,4 +4,4 @@ using MediatR;
 
 namespace Identity.Application.Followers.Queries;
 
-public record GetUserFollowersQuery(string At) : IRequest<ErrorOr<FollowersResult>>;
+public record GetUserFollowersQuery(string At) : IRequest<ErrorOr<List<FollowerResult>>>;

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Identity.Application.Followers.Queries;
 
 internal class GetUserFollowersQueryHandler
-    : IRequestHandler<GetUserFollowersQuery, ErrorOr<FollowersResult>>
+    : IRequestHandler<GetUserFollowersQuery, ErrorOr<List<FollowerResult>>>
 {
     private readonly IdentityDbContext _dbContext;
 
@@ -18,7 +18,7 @@ internal class GetUserFollowersQueryHandler
         _dbContext = dbContext;
     }
 
-    public async Task<ErrorOr<FollowersResult>> Handle(
+    public async Task<ErrorOr<List<FollowerResult>>> Handle(
         GetUserFollowersQuery request, CancellationToken cancellationToken)
     {
         if (!await _dbContext.Users.ExistAsync(request.At, cancellationToken))
@@ -30,19 +30,18 @@ internal class GetUserFollowersQueryHandler
             .Users
             .FromAtToIdAsync(request.At, cancellationToken);
 
-        var followers = await _dbContext
+        var userFollowers = await _dbContext
             .Followers
             .Include(x => x.User)
-            .Where(x => x.Id == userId)
+            .Where(x => x.UserId == userId)
             .Select(x => new FollowerResult(
-                x.User.Name,
-                x.User.At,
-                x.User.Bio,
-                x.User.AvatarUrl,
-                x.CreatedAt,
+                x.FollowedByUser.At,
+                x.FollowedByUser.Name,
+                x.FollowedByUser.Bio,
+                x.FollowedByUser.AvatarUrl,
                 x.Following))
             .ToListAsync(cancellationToken);
 
-        return new FollowersResult(followers);
+        return userFollowers;
     }
 }

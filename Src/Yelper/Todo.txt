@@ -1,6 +1,10 @@
 #Todo:
 - How to make Functional Test as fast as I can?
-	- Why InitializeAsync is calle twice?
 - Optimize identifier in Idendity.User table as clustered-index. 
+
+#Issues:
+- I share the same database with Collection in IClassFixture, but it seems to ignore the database conflicts.
+  I can create two johnmclean account in different test class. How?
+- Why InitializeAsync is called twice?
 
 #Done:

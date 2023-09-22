@@ -1,4 +1,4 @@
-﻿using Identity.Application.Followings.Common;
+﻿using Identity.Application.Followers.Common;
 using Identity.Application.Users.Commands;
 using Identity.Application.Users.Common;
 using Identity.Contracts.Followings;
@@ -6,20 +6,20 @@ using Identity.FunctionalTests.Common;
 using System.Net;
 using Tests.Common.Networking;
 
-namespace Identity.FunctionalTests.Followings;
+namespace Identity.FunctionalTests.Followers;
 
 [Collection(nameof(ShareSameDatabaseInstance))]
-public class UnfollowUser_Tests : IClassFixture<IdentityApiTestFixture>
+public class GetUserFollowers_Tests : IClassFixture<IdentityApiTestFixture>
 {
     private readonly IdentityApiTestFixture _fixture;
 
-    public UnfollowUser_Tests(IdentityApiTestFixture fixture)
+    public GetUserFollowers_Tests(IdentityApiTestFixture fixture)
     {
         _fixture = fixture;
     }
 
     [Fact]
-    public async Task UnfollowUser_EnsureCorrectness()
+    public async Task GetUserFollowers_EnsureCorrectness()
     {
         //act
         var createJohnUserRequest = new CreateUserCommand("johnmclean", "John McLean");
@@ -32,19 +32,19 @@ public class UnfollowUser_Tests : IClassFixture<IdentityApiTestFixture>
 
         await _fixture.Auth("johnmclean", createJohnUserResponse.Value.AccessCode);
 
-        //arrange
         var followRequest = new FollowUserRequest(createLoydUserResponse.Value.User.UserId);
 
         await RestApiCaller.PostAsync(_fixture.ApiClient, $"api/v1/following", followRequest);
 
-        var unfollowRequestResponse = await RestApiCaller
-            .DeleteAsync(_fixture.ApiClient, $"api/v1/following/{createLoydUserResponse.Value.User.UserId}");
-
-        var followingsGetResponse = await RestApiCaller
-            .GetAsync<List<UserFollowingResult>>(_fixture.ApiClient, $"api/v1/following/johnmclean");
+        //arrange
+        var followersResponse = await RestApiCaller
+            .GetAsync<List<FollowerResult>>(_fixture.ApiClient, $"api/v1/followers/loydchristmas");
 
         //assert
-        Assert.Equal(HttpStatusCode.OK, unfollowRequestResponse.Response.StatusCode);
-        Assert.Empty(followingsGetResponse.Value);
+        Assert.Equal(HttpStatusCode.OK, followersResponse.Response.StatusCode);
+        Assert.Single(followersResponse.Value);
+        Assert.Equal(createJohnUserResponse.Value.User.At, followersResponse.Value[0].At);
+        Assert.Equal(createJohnUserResponse.Value.User.Name, followersResponse.Value[0].Name);
     }
 }
+
