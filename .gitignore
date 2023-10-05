@@ -29,3 +29,10 @@
 /Src/Yelper/Common/Services/AuthService/obj
 /Src/Yelper/Services/Writer/Writer.API/obj
 /Src/Yelper/Common/EventBus/EventBus/obj/Debug/net7.0
+/Src/Yelper/Common/EventBus/EventBus/obj
+/Src/Yelper/Common/EventBus/RabbitMQEventBus/obj
+/Src/Yelper/Common/EventBus/EventBus/bin/Debug/net7.0
+/Src/Yelper/Common/EventBus/RabbitMQEventBus/bin/Debug/net7.0
+/Src/Yelper/Services/Writer/Writer.API/bin/Debug/net7.0
+/Src/Yelper/Services/Writer/Writer.Contracts/Writer.Contracts/bin/Debug/net7.0
+/Src/Yelper/Services/Writer/Writer.Contracts/Writer.Contracts/obj

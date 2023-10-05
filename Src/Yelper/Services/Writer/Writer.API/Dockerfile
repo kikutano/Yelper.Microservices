@@ -8,6 +8,9 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["Services/Writer/Writer.API/Writer.API.csproj", "Services/Writer/Writer.API/"]
+COPY ["Common/EventBus/EventBus/EventBus.csproj", "Common/EventBus/EventBus/"]
+COPY ["Common/EventBus/RabbitMQEventBus/RabbitMQEventBus.csproj", "Common/EventBus/RabbitMQEventBus/"]
+COPY ["Services/Writer/Writer.Contracts/Writer.Contracts/Writer.Contracts.csproj", "Services/Writer/Writer.Contracts/Writer.Contracts/"]
 RUN dotnet restore "Services/Writer/Writer.API/Writer.API.csproj"
 COPY . .
 WORKDIR "/src/Services/Writer/Writer.API"

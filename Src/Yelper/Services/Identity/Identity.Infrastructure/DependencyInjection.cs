@@ -1,9 +1,11 @@
-﻿using Identity.Application.Common.Auth;
+﻿using EventBus.Interfaces;
+using Identity.Application.Common.Auth;
 using Identity.Infrastructure.Auth;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using RabbitMQEventBus;
 using System.Text;
 
 namespace Identity.Infrastructure;
@@ -14,6 +16,7 @@ public static class DependencyInjection
         this IServiceCollection services, IConfiguration configuration)
     {
         ConfigureAuth(services, configuration);
+        RegisterEventBus(services, configuration);
 
         return services;
     }
@@ -41,5 +44,11 @@ public static class DependencyInjection
         });
 
         services.AddScoped<IAuthService, JwtTokenAuthService>();
+    }
+
+    private static void RegisterEventBus(IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddSingleton<IEventBus, EventBusRabbitMQ>();
+        //services.AddSingleton<IEventBusSubscriptionsManager, >
     }
 }
