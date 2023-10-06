@@ -12,43 +12,43 @@ namespace Identity.Infrastructure;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddInfrastructure(
-        this IServiceCollection services, IConfiguration configuration)
-    {
-        ConfigureAuth(services, configuration);
-        RegisterEventBus(services, configuration);
+	public static IServiceCollection AddInfrastructure(
+		this IServiceCollection services, IConfiguration configuration)
+	{
+		ConfigureAuth(services, configuration);
+		RegisterEventBus(services, configuration);
 
-        return services;
-    }
+		return services;
+	}
 
-    private static void ConfigureAuth(IServiceCollection services, IConfiguration configuration)
-    {
-        services.AddAuthentication(options =>
-        {
-            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-        }).AddJwtBearer(options =>
-        {
-            options.TokenValidationParameters = new TokenValidationParameters()
-            {
-                ValidIssuer = configuration["Jwt:Issuer"],
-                ValidAudience = configuration["Jwt:Audience"],
-                IssuerSigningKey = new SymmetricSecurityKey(
-                    Encoding.UTF8.GetBytes(configuration["Jwt:Key"]!)),
-                ValidateIssuer = true,
-                ValidateAudience = true,
-                ValidateLifetime = true,
-                ValidateIssuerSigningKey = true,
-            };
-        });
+	private static void ConfigureAuth(IServiceCollection services, IConfiguration configuration)
+	{
+		services.AddAuthentication(options =>
+		{
+			options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+			options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+			options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+		}).AddJwtBearer(options =>
+		{
+			options.TokenValidationParameters = new TokenValidationParameters()
+			{
+				ValidIssuer = configuration["Jwt:Issuer"],
+				ValidAudience = configuration["Jwt:Audience"],
+				IssuerSigningKey = new SymmetricSecurityKey(
+					Encoding.UTF8.GetBytes(configuration["Jwt:Key"]!)),
+				ValidateIssuer = true,
+				ValidateAudience = true,
+				ValidateLifetime = true,
+				ValidateIssuerSigningKey = true,
+			};
+		});
 
-        services.AddScoped<IAuthService, JwtTokenAuthService>();
-    }
+		services.AddScoped<IAuthService, JwtTokenAuthService>();
+	}
 
-    private static void RegisterEventBus(IServiceCollection services, IConfiguration configuration)
-    {
-        services.AddSingleton<IEventBus, EventBusRabbitMQ>();
-        //services.AddSingleton<IEventBusSubscriptionsManager, >
-    }
+	private static void RegisterEventBus(IServiceCollection services, IConfiguration configuration)
+	{
+		services.AddSingleton<IEventBus, EventBusRabbitMQ>();
+		services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
+	}
 }
