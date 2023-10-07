@@ -12,7 +12,7 @@ services:
   environment:
     - ConnectionString=Server=sqldata;Database=Yelper.Services.IdentityDb;User Id=sa;Password=SA_PASSWORD
   depends_on:
-    - sqldata
+    - identity.sqldata
     - rabbitmq
  
  writer.api:
@@ -24,6 +24,7 @@ services:
    - "5200:80"
    - "5201:443"
   depends_on:
+   - writer.sqldata
    - rabbitmq
 
  rabbitmq: # login guest:guest
@@ -39,10 +40,18 @@ services:
     - "15671:15671"
     - "15672:15672"
 
- sqldata:
+ identity.sqldata:
     image: mcr.microsoft.com/mssql/server:2019-latest
     environment:
         - SA_PASSWORD=w3rystr0ngp4ss!
         - ACCEPT_EULA=Y
     ports:
         - "5434:1433"
+
+ writer.sqldata:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+        - SA_PASSWORD=w3rystr0ngp4ss!
+        - ACCEPT_EULA=Y
+    ports:
+        - "5435:1433"
