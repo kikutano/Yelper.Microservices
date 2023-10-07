@@ -1,13 +1,20 @@
 ﻿using EventBus.Events;
+using MediatR;
+using Writer.Application.Users.Commands;
 
 namespace Writer.API.IntegrationEvents.Receiver.Users;
 
 public class UserCreatedIntegrationEventHandler : IIntegrationEventHandler
 {
-    public Task Handle(string plainContent)
-    {
-        int a = 0;
+	private readonly IMediator _mediator;
 
-        return Task.CompletedTask;
-    }
+	public UserCreatedIntegrationEventHandler(IMediator mediator)
+	{
+		_mediator = mediator;
+	}
+
+	public async Task Handle(string plainContent)
+	{
+		await _mediator.Send(new CreateUserCommand("at", "name", "avt"));
+	}
 }

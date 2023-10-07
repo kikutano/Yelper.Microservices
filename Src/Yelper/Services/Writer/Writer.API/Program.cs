@@ -1,6 +1,7 @@
 using EventBus.Interfaces;
 using Writer.API;
 using Writer.API.IntegrationEvents.Receiver.Users;
+using Writer.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ var configuration = provider.GetService<IConfiguration>();
 // Add services to the container.
 
 builder.Services
+	.AddApplication(configuration!)
 	.AddPresentation(configuration!);
 
 builder.Services.AddControllers();

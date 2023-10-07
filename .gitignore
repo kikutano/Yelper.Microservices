@@ -36,3 +36,8 @@
 /Src/Yelper/Services/Writer/Writer.API/bin/Debug/net7.0
 /Src/Yelper/Services/Writer/Writer.Contracts/Writer.Contracts/bin/Debug/net7.0
 /Src/Yelper/Services/Writer/Writer.Contracts/Writer.Contracts/obj
+/Src/Yelper/Services/Writer/Writer.Application/Writer.Application/bin/Debug/net7.0
+/Src/Yelper/Services/Writer/Writer.Application/Writer.Application/obj/Debug/net7.0
+/Src/Yelper/Services/Writer/Writer.Domain/Writer.Domain/bin/Debug/net7.0
+/Src/Yelper/Services/Writer/Writer.Domain/Writer.Domain/obj
+/Src/Yelper/Services/Writer/Writer.Application/Writer.Application/obj

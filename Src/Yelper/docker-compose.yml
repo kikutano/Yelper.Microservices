@@ -10,16 +10,19 @@ services:
    - "5100:80"
    - "5101:443"
   environment:
-    - ConnectionString=Server=sqldata;Database=Yelper.Services.IdentityDb;User Id=sa;Password=SA_PASSWORD
+    - ConnectionString=Server=identity.sqldata;Database=Yelper.Services.IdentityDb;User Id=sa;Password=SA_PASSWORD
   depends_on:
     - identity.sqldata
     - rabbitmq
+  #command: ["dotnet", "ef", "database update"]
  
  writer.api:
   image: ${DOCKER_REGISTRY-}writerapi
   build:
    context: .
    dockerfile: Services/Writer/Writer.API/Dockerfile
+  environment:
+    - ConnectionString=Server=identity.sqldata;Database=Yelper.Services.IdentityDb;User Id=sa;Password=SA_PASSWORD
   ports:
    - "5200:80"
    - "5201:443"
