@@ -1,5 +1,6 @@
 ﻿using EventBus.Events;
 using MediatR;
+using System.Text.Json;
 using Writer.Application.Users.Commands;
 
 namespace Writer.API.IntegrationEvents.Receiver.Users;
@@ -15,6 +16,9 @@ public class UserCreatedIntegrationEventHandler : IIntegrationEventHandler
 
 	public async Task Handle(string plainContent)
 	{
-		await _mediator.Send(new CreateUserCommand("at", "name", "avt"));
+		var integrationEvent = JsonSerializer.Deserialize<UserCreatedIntegrationEvent>(plainContent);
+
+		await _mediator.Send(
+			new CreateUserCommand(integrationEvent!.At, integrationEvent.Name, integrationEvent.AvatarUrl));
 	}
 }

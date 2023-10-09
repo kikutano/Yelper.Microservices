@@ -36,11 +36,11 @@ public class EventBusRabbitMQ : IEventBus
 		}
 	}
 
-	public void Publish(IntegrationEvent integrationEvent)
+	public void Publish<T_Event>(T_Event integrationEvent)
 	{
 		var json = JsonSerializer.Serialize(integrationEvent);
 		var body = Encoding.UTF8.GetBytes(json);
-		var eventName = integrationEvent.GetType().Name;
+		var eventName = integrationEvent!.GetType().Name;
 
 		_channel.BasicPublish(
 			exchange: _exchangeName,

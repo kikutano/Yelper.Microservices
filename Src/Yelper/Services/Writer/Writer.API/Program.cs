@@ -1,6 +1,5 @@
-using EventBus.Interfaces;
 using Writer.API;
-using Writer.API.IntegrationEvents.Receiver.Users;
+using Writer.API.IntegrationEvents;
 using Writer.Application;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,29 +7,17 @@ var builder = WebApplication.CreateBuilder(args);
 var provider = builder.Services.BuildServiceProvider(); //correggere
 var configuration = provider.GetService<IConfiguration>();
 
-// Add services to the container.
-
 builder.Services
 	.AddApplication(configuration!)
 	.AddPresentation(configuration!);
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//TODO: Incapsulate!
-builder.Services.AddScoped<UserCreatedIntegrationEventHandler>();
-
 var app = builder.Build();
 
-var eventBus = app.Services.GetRequiredService<IEventBus>();
-app.Services
-	.GetService<IEventBusSubscriptionsManager>()!
-	.SetServiceScope(app.Services.CreateScope());
-
-//TODO: Incapsulate!
-eventBus.Subscribe<UserCreatedIntegrationEvent, UserCreatedIntegrationEventHandler>();
+EventBusSubscriber.SubscribeAllEventBus(app);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -28,16 +28,17 @@ public class UserController : ApiController
 	[SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(UserCreatedResult))]
 	[SwaggerResponse((int)HttpStatusCode.BadRequest, Type = typeof(Error))]
 	[SwaggerResponse((int)HttpStatusCode.Conflict, Type = typeof(Error))]
-	public async Task<IActionResult> Create(CreateUserCommand request)
+	public async Task<IActionResult> Create(CreateUserCommand request, CancellationToken cancellationToken)
 	{
-		var commandResult = await _mediator.Send(request);
+		var commandResult = await _mediator.Send(request, cancellationToken);
 
 		if (!commandResult.IsError)
 		{
 			_eventBus.Publish(new UserCreatedIntegrationEvent(
 				UserId: commandResult.Value.User.UserId,
 				At: commandResult.Value.User.At,
-				Name: commandResult.Value.User.Name));
+				Name: commandResult.Value.User.Name,
+				AvatarUrl: commandResult.Value.User.AvatarUrl));
 
 			return Ok(commandResult.Value);
 		}
@@ -49,9 +50,9 @@ public class UserController : ApiController
 	[Route("{at}")]
 	[SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(UserResult))]
 	[SwaggerResponse((int)HttpStatusCode.NotFound, Type = typeof(Error))]
-	public async Task<IActionResult> GetUserByAt(string at)
+	public async Task<IActionResult> GetUserByAt(string at, CancellationToken cancellationToken)
 	{
-		var result = await _mediator.Send(new GetUserByAtQuery(at));
+		var result = await _mediator.Send(new GetUserByAtQuery(at), cancellationToken);
 
 		return Ok(result.Value);
 	}

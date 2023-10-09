@@ -2,4 +2,5 @@
 
 namespace Identity.API.IntegrationEvents.Users;
 
-public record UserCreatedIntegrationEvent(Guid UserId, string At, string Name) : IntegrationEvent;
+public record UserCreatedIntegrationEvent(
+	Guid UserId, string At, string Name, string AvatarUrl) : IntegrationEvent;
