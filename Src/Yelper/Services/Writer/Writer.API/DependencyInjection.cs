@@ -1,7 +1,7 @@
-﻿using EventBus.Interfaces;
+﻿using EventBus.Events;
+using EventBus.Interfaces;
 using RabbitMQEventBus;
 using Writer.API.Common.Configurations;
-using Writer.API.IntegrationEvents.Receiver.Users;
 
 namespace Writer.API;
 
@@ -31,7 +31,18 @@ public static class DependencyInjection
 		services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
 		services.AddSingleton<IEventBus, EventBusRabbitMQ>();
 
-		//TODO: automate this process?
-		services.AddScoped<UserCreatedIntegrationEventHandler>();
+		RegisterAllIntegrationEvents(services);
+	}
+
+	private static void RegisterAllIntegrationEvents(IServiceCollection services)
+	{
+		var integrationEventHandlers = AppDomain.CurrentDomain.GetAssemblies()
+			.SelectMany(x => x.GetTypes())
+			.Where(x => typeof(IIntegrationEventHandler).IsAssignableFrom(x));
+
+		foreach (var eventHandler in integrationEventHandlers)
+		{
+			services.AddSingleton(eventHandler);
+		}
 	}
 }
