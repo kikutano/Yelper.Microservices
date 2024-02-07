@@ -41,3 +41,12 @@
 /Src/Yelper/Services/Writer/Writer.Domain/Writer.Domain/bin/Debug/net7.0
 /Src/Yelper/Services/Writer/Writer.Domain/Writer.Domain/obj
 /Src/Yelper/Services/Writer/Writer.Application/Writer.Application/obj
+/Src/Yelper/Services/Identity/Identity.API/bin/Debug/net8.0
+/Src/Yelper/Services/Identity/Identity.Application/bin/Debug/net8.0
+/Src/Yelper/Services/Identity/Identity.Contracts/bin/Debug/net8.0
+/Src/Yelper/Services/Identity/Identity.Domain/bin/Debug/net8.0
+/Src/Yelper/Services/Identity/Identity.Infrastructure/bin/Debug/net8.0
+/Src/Yelper/Services/Identity/Tests/Identity.FunctionalTests/bin/Debug/net8.0
+/Src/Yelper/Common/API/YelperCommon/obj
+/Src/Yelper/Tests/Writer.FunctionalTests/obj
+/Src/Yelper/Common/API/YelperCommon/bin/Debug/net8.0
