@@ -7,12 +7,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Net;
+using YelperCommon;
 
 namespace Identity.API.Controllers;
 
 [Route("api/v1/[controller]")]
 [ApiController]
-public class FollowingController : ApiController
+public class FollowingController : YelperApiController
 {
     private readonly IMediator _mediator;
 

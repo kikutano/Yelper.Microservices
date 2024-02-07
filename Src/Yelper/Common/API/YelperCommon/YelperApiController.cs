@@ -1,11 +1,11 @@
 ﻿using ErrorOr;
-using Identity.API.Common.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Identity.API.Controllers;
+namespace YelperCommon;
 
 [ApiController]
-public class ApiController : Controller
+public class YelperApiController : Controller
 {
     protected Guid RequesterUserId =>
         Guid.Parse(User.Claims.Where(x => x.Type == "id").ToList()[0].Value);

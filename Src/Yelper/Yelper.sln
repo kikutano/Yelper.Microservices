@@ -60,9 +60,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Writer.Contracts", "Service
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3815D85E-9C15-4D7E-B5CE-B3E12E13E174}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Writer.Application", "Services\Writer\Writer.Application\Writer.Application\Writer.Application.csproj", "{87FF136A-058F-4291-9702-2C97C9B9F9D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Writer.Application", "Services\Writer\Writer.Application\Writer.Application\Writer.Application.csproj", "{87FF136A-058F-4291-9702-2C97C9B9F9D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Writer.Domain", "Services\Writer\Writer.Domain\Writer.Domain\Writer.Domain.csproj", "{1F8AABD3-DA83-4B9E-AB9B-6481A720C5EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Writer.Domain", "Services\Writer\Writer.Domain\Writer.Domain\Writer.Domain.csproj", "{1F8AABD3-DA83-4B9E-AB9B-6481A720C5EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Writer.FunctionalTests", "Tests\Writer.FunctionalTests\Writer.FunctionalTests.csproj", "{6B0D704E-51E7-458C-B551-0C1D4DCF95CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{5E633A97-38C4-40DF-8A8B-F53A2314FF48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YelperCommon", "Common\API\YelperCommon\YelperCommon.csproj", "{9355F7D1-23A2-4B5D-AF7D-F5A0C79E9992}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -134,6 +140,14 @@ Global
 		{1F8AABD3-DA83-4B9E-AB9B-6481A720C5EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F8AABD3-DA83-4B9E-AB9B-6481A720C5EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F8AABD3-DA83-4B9E-AB9B-6481A720C5EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B0D704E-51E7-458C-B551-0C1D4DCF95CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B0D704E-51E7-458C-B551-0C1D4DCF95CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B0D704E-51E7-458C-B551-0C1D4DCF95CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B0D704E-51E7-458C-B551-0C1D4DCF95CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9355F7D1-23A2-4B5D-AF7D-F5A0C79E9992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9355F7D1-23A2-4B5D-AF7D-F5A0C79E9992}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9355F7D1-23A2-4B5D-AF7D-F5A0C79E9992}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9355F7D1-23A2-4B5D-AF7D-F5A0C79E9992}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -165,6 +179,9 @@ Global
 		{74532D2C-BB2A-446C-B02E-B9435FCD178D} = {C7FA2D4C-C614-412C-BE15-20EEC520C8EB}
 		{87FF136A-058F-4291-9702-2C97C9B9F9D0} = {C7FA2D4C-C614-412C-BE15-20EEC520C8EB}
 		{1F8AABD3-DA83-4B9E-AB9B-6481A720C5EE} = {C7FA2D4C-C614-412C-BE15-20EEC520C8EB}
+		{6B0D704E-51E7-458C-B551-0C1D4DCF95CB} = {68BA0C5C-2629-4A62-9F62-82FB29C7B978}
+		{5E633A97-38C4-40DF-8A8B-F53A2314FF48} = {4027EC8C-7A44-4C81-A6DE-47DE5F2EABDB}
+		{9355F7D1-23A2-4B5D-AF7D-F5A0C79E9992} = {5E633A97-38C4-40DF-8A8B-F53A2314FF48}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {779B06E6-8E8A-49DB-B03C-8487C9BB72B1}

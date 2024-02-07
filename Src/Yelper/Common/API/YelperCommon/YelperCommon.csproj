@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -8,10 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="ErrorOr" Version="1.9.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Common\DomainDrivenDesign\DomainDrivenDesign\DomainDrivenDesign.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.1" />
   </ItemGroup>
 
 </Project>
