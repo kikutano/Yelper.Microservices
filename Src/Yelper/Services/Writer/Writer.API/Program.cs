@@ -1,6 +1,7 @@
 using Writer.API;
 using Writer.API.IntegrationEvents;
 using Writer.Application;
+using Writer.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,8 +9,9 @@ var provider = builder.Services.BuildServiceProvider(); //correggere
 var configuration = provider.GetService<IConfiguration>();
 
 builder.Services
-	.AddApplication(configuration!)
-	.AddPresentation(configuration!);
+    .AddApplication(configuration!)
+    .AddInfrastructure(configuration!)
+    .AddPresentation(configuration!);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -22,8 +24,8 @@ EventBusSubscriber.SubscribeAllEventBus(app);
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-	app.UseSwagger();
-	app.UseSwaggerUI();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

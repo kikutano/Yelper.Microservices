@@ -64,11 +64,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Writer.Application", "Servi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Writer.Domain", "Services\Writer\Writer.Domain\Writer.Domain\Writer.Domain.csproj", "{1F8AABD3-DA83-4B9E-AB9B-6481A720C5EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Writer.FunctionalTests", "Tests\Writer.FunctionalTests\Writer.FunctionalTests.csproj", "{6B0D704E-51E7-458C-B551-0C1D4DCF95CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Writer.FunctionalTests", "Tests\Writer.FunctionalTests\Writer.FunctionalTests.csproj", "{6B0D704E-51E7-458C-B551-0C1D4DCF95CB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{5E633A97-38C4-40DF-8A8B-F53A2314FF48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YelperCommon", "Common\API\YelperCommon\YelperCommon.csproj", "{9355F7D1-23A2-4B5D-AF7D-F5A0C79E9992}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YelperCommon", "Common\API\YelperCommon\YelperCommon.csproj", "{9355F7D1-23A2-4B5D-AF7D-F5A0C79E9992}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Writer.Infrastructure", "Services\Writer\Writer.Infrastructure\Writer.Infrastructure.csproj", "{CD89D1F3-F9AF-47BE-95F4-EC6B1FB4B0BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -148,6 +150,10 @@ Global
 		{9355F7D1-23A2-4B5D-AF7D-F5A0C79E9992}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9355F7D1-23A2-4B5D-AF7D-F5A0C79E9992}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9355F7D1-23A2-4B5D-AF7D-F5A0C79E9992}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD89D1F3-F9AF-47BE-95F4-EC6B1FB4B0BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD89D1F3-F9AF-47BE-95F4-EC6B1FB4B0BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD89D1F3-F9AF-47BE-95F4-EC6B1FB4B0BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD89D1F3-F9AF-47BE-95F4-EC6B1FB4B0BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -182,6 +188,7 @@ Global
 		{6B0D704E-51E7-458C-B551-0C1D4DCF95CB} = {68BA0C5C-2629-4A62-9F62-82FB29C7B978}
 		{5E633A97-38C4-40DF-8A8B-F53A2314FF48} = {4027EC8C-7A44-4C81-A6DE-47DE5F2EABDB}
 		{9355F7D1-23A2-4B5D-AF7D-F5A0C79E9992} = {5E633A97-38C4-40DF-8A8B-F53A2314FF48}
+		{CD89D1F3-F9AF-47BE-95F4-EC6B1FB4B0BC} = {C7FA2D4C-C614-412C-BE15-20EEC520C8EB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {779B06E6-8E8A-49DB-B03C-8487C9BB72B1}

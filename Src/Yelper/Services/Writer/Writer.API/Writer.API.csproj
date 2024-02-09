@@ -26,8 +26,10 @@
     <ProjectReference Include="..\..\..\Common\API\YelperCommon\YelperCommon.csproj" />
     <ProjectReference Include="..\..\..\Common\EventBus\EventBus\EventBus.csproj" />
     <ProjectReference Include="..\..\..\Common\EventBus\RabbitMQEventBus\RabbitMQEventBus.csproj" />
+    <ProjectReference Include="..\..\Identity\Identity.Infrastructure\Identity.Infrastructure.csproj" />
     <ProjectReference Include="..\Writer.Application\Writer.Application\Writer.Application.csproj" />
     <ProjectReference Include="..\Writer.Contracts\Writer.Contracts\Writer.Contracts.csproj" />
+    <ProjectReference Include="..\Writer.Infrastructure\Writer.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
