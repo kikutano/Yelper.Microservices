@@ -50,3 +50,11 @@
 /Src/Yelper/Common/API/YelperCommon/obj
 /Src/Yelper/Tests/Writer.FunctionalTests/obj
 /Src/Yelper/Common/API/YelperCommon/bin/Debug/net8.0
+/Src/Yelper/Common/Tests/Tests.Common/bin/Debug/net8.0
+/Src/Yelper/Services/Writer/Writer.API/bin/Debug/net8.0
+/Src/Yelper/Services/Writer/Writer.Application/Writer.Application/bin/Debug/net8.0
+/Src/Yelper/Services/Writer/Writer.Contracts/Writer.Contracts/bin/Debug/net8.0
+/Src/Yelper/Services/Writer/Writer.Domain/Writer.Domain/bin/Debug/net8.0
+/Src/Yelper/Services/Writer/Writer.Infrastructure/bin/Debug/net8.0
+/Src/Yelper/Services/Writer/Writer.Infrastructure/obj
+/Src/Yelper/Tests/Writer.FunctionalTests/bin/Debug/net8.0
