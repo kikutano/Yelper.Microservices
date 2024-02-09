@@ -5,13 +5,13 @@ namespace Writer.API.IntegrationEvents;
 
 public static class EventBusSubscriber
 {
-	public static void SubscribeAllEventBus(WebApplication webApplication)
-	{
-		var eventBus = webApplication.Services.GetRequiredService<IEventBus>();
-		webApplication.Services
-			.GetService<IEventBusSubscriptionsManager>()!
-			.SetServiceScope(webApplication.Services.CreateScope());
+    public static void SubscribeAllEventBus(WebApplication webApplication)
+    {
+        var eventBus = webApplication.Services.GetRequiredService<IEventBus>();
+        webApplication.Services
+            .GetService<IEventBusSubscriptionsManager>()!
+            .SetServiceScope(webApplication.Services.CreateScope());
 
-		eventBus.Subscribe<UserCreatedIntegrationEvent, UserCreatedIntegrationEventHandler>();
-	}
+        eventBus.Subscribe<UserCreatedIntegrationEvent, UserCreatedIntegrationEventHandler>();
+    }
 }
