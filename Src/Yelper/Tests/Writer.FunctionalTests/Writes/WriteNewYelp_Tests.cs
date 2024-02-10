@@ -1,4 +1,6 @@
-﻿using Tests.Common.ApiFactories;
+﻿using System.Net;
+using Tests.Common.ApiFactories;
+using Tests.Common.Networking;
 using Writer.Application.Common.Persistence;
 using Writer.FunctionalTests.Common;
 
@@ -17,6 +19,9 @@ public class WriteNewYelp_Tests : IClassFixture<WriterApiTestFixture>
     [Fact]
     public async Task WriteNewYelp_EnsureCorrectness()
     {
+        var response = await RestApiCaller
+            .PostAsync<RestApiResponse>(_fixture.ApiClient, "api/v1/writer");
 
+        Assert.Equal(HttpStatusCode.OK, response.Response.StatusCode);
     }
 }
