@@ -1,5 +1,6 @@
 using Writer.API;
 using Writer.API.IntegrationEvents;
+using Writer.API.IntegrationEvents.Receiver.Users;
 using Writer.Application;
 using Writer.Infrastructure;
 
@@ -12,6 +13,8 @@ builder.Services
     .AddApplication(configuration!)
     .AddInfrastructure(configuration!)
     .AddPresentation(configuration!);
+
+builder.Services.AddScoped<UserCreatedIntegrationEventHandler>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -36,4 +39,4 @@ app.MapControllers();
 
 app.Run();
 
-public partial class Program { }
+public partial class Program;

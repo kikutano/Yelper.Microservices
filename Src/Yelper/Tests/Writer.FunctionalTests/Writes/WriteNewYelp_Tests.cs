@@ -19,6 +19,8 @@ public class WriteNewYelp_Tests : IClassFixture<WriterApiTestFixture>
     [Fact]
     public async Task WriteNewYelp_EnsureCorrectness()
     {
+        await _fixture.Auth("johnmclain", "1234");
+
         var response = await RestApiCaller
             .PostAsync<RestApiResponse>(_fixture.ApiClient, "api/v1/writer");
 

@@ -1,6 +1,5 @@
 ﻿using EventBus.Interfaces;
 using Identity.Application.Common.Auth;
-using Identity.Infrastructure.Auth;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

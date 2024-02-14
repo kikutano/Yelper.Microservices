@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Identity.Application.Common.Auth;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System.Net.Http.Headers;
 using Testcontainers.MsSql;
 using Testcontainers.RabbitMq;
 using Xunit;
@@ -36,14 +39,13 @@ public abstract class ApiTestFixture<TProgram, TDbContext> : IAsyncLifetime
         ApiClient = _apiFactory.CreateClient();
     }
 
-    //public async Task Auth(string at, string accessCode)
-    //{
-    //    var authRequest = new AuthRequestCommand(at, accessCode);
+    public async Task Auth(string at, string accessCode)
+    {
+        var configuration = (IConfiguration)_apiFactory.Services.GetService(typeof(IConfiguration))!;
 
-    //    var response = await RestApiCaller
-    //        .PostAsync<AuthRequestResult>(ApiClient, $"api/v1/auth", authRequest);
+        var jwtToken = new JwtTokenAuthService()
+             .GenerateToken(Guid.NewGuid(), at, configuration);
 
-    //    ApiClient.DefaultRequestHeaders.Authorization =
-    //        new AuthenticationHeaderValue("Bearer", response.Value.Token);
-    //}
+        ApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
+    }
 }
