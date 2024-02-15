@@ -39,7 +39,7 @@ public abstract class ApiTestFixture<TProgram, TDbContext> : IAsyncLifetime
         ApiClient = _apiFactory.CreateClient();
     }
 
-    public async Task Auth(string at, string accessCode)
+    public void Auth(string at)
     {
         var configuration = (IConfiguration)_apiFactory.Services.GetService(typeof(IConfiguration))!;
 

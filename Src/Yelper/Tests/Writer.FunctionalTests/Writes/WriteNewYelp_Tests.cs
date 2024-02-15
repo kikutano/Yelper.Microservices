@@ -2,6 +2,7 @@
 using Tests.Common.ApiFactories;
 using Tests.Common.Networking;
 using Writer.Application.Common.Persistence;
+using Writer.Contracts.Writes;
 using Writer.FunctionalTests.Common;
 
 namespace Writer.FunctionalTests.Writes;
@@ -19,11 +20,26 @@ public class WriteNewYelp_Tests : IClassFixture<WriterApiTestFixture>
     [Fact]
     public async Task WriteNewYelp_EnsureCorrectness()
     {
-        await _fixture.Auth("johnmclain", "1234");
+        _fixture.Auth("johnmclain");
+
+        var request = new CreateYelpRequest("an amazing new yelp!");
 
         var response = await RestApiCaller
-            .PostAsync<RestApiResponse>(_fixture.ApiClient, "api/v1/writer");
+            .PostAsync<RestApiResponse>(_fixture.ApiClient, "api/v1/writer", request);
 
         Assert.Equal(HttpStatusCode.OK, response.Response.StatusCode);
+    }
+
+    [Fact]
+    public async Task WriteNewYelp_WithNotExistingUser_MustReturnNotFound()
+    {
+        _fixture.Auth("johnmclain");
+
+        var request = new CreateYelpRequest("an amazing new yelp!");
+
+        var response = await RestApiCaller
+            .PostAsync<RestApiResponse>(_fixture.ApiClient, "api/v1/writer", request);
+
+        Assert.Equal(HttpStatusCode.NotFound, response.Response.StatusCode);
     }
 }
