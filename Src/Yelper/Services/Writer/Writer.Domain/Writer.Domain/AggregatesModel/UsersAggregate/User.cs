@@ -9,14 +9,15 @@ public class User : Entity, IAggregateRoot
     public string At { get; private set; } = string.Empty;
     public string AvatarUrl { get; private set; } = string.Empty;
 
-    protected User(string name, string at, string avatarUrl)
+    protected User(Guid id, string name, string at, string avatarUrl)
     {
+        Id = id;
         Name = name;
         At = at;
         AvatarUrl = avatarUrl;
     }
 
-    public static ErrorOr<User> Create(string name, string at, string avatarUrl)
+    public static ErrorOr<User> Create(Guid id, string name, string at, string avatarUrl)
     {
         var errors = Validate(name, at);
 
@@ -25,7 +26,7 @@ public class User : Entity, IAggregateRoot
             return errors.First();
         }
 
-        return new User(name, at, avatarUrl);
+        return new User(id, name, at, avatarUrl);
     }
 
     private static List<Error> Validate(string name, string at)

@@ -7,18 +7,22 @@ namespace Writer.API.IntegrationEvents.Receiver.Users;
 
 public class UserCreatedIntegrationEventHandler : IIntegrationEventHandler
 {
-	private readonly IMediator _mediator;
+    private readonly IMediator _mediator;
 
-	public UserCreatedIntegrationEventHandler(IMediator mediator)
-	{
-		_mediator = mediator;
-	}
+    public UserCreatedIntegrationEventHandler(IMediator mediator)
+    {
+        _mediator = mediator;
+    }
 
-	public async Task Handle(string plainContent)
-	{
-		var integrationEvent = JsonSerializer.Deserialize<UserCreatedIntegrationEvent>(plainContent);
+    public async Task Handle(string plainContent)
+    {
+        var integrationEvent = JsonSerializer.Deserialize<UserCreatedIntegrationEvent>(plainContent);
 
-		await _mediator.Send(
-			new CreateUserCommand(integrationEvent!.At, integrationEvent.Name, integrationEvent.AvatarUrl));
-	}
+        await _mediator.Send(
+            new CreateUserCommand(
+                integrationEvent!.UserId,
+                integrationEvent!.At,
+                integrationEvent.Name,
+                integrationEvent.AvatarUrl));
+    }
 }

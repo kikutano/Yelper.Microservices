@@ -2,4 +2,5 @@
 
 namespace Writer.Application.Users.Commands;
 
-public record CreateUserCommand(string At, string Name, string AvatarUrl) : IRequest;
+public record CreateUserCommand(
+    Guid UserId, string At, string Name, string AvatarUrl) : IRequest;

@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using Tests.Common.ApiFactories;
+using Tests.Common.IntegrationEvents;
 using Tests.Common.Networking;
 using Writer.Application.Common.Persistence;
 using Writer.Contracts.Writes;
@@ -20,7 +21,11 @@ public class WriteNewYelp_Tests : IClassFixture<WriterApiTestFixture>
     [Fact]
     public async Task WriteNewYelp_EnsureCorrectness()
     {
-        _fixture.Auth("johnmclain");
+        var userId = Guid.NewGuid();
+        _fixture.LauchIntegrationEvent(
+            new UserCreatedIntegrationEvent(userId, "johnmclean", "Jonh McLean", ""));
+
+        _fixture.Auth(userId, "johnmclain");
 
         var request = new CreateYelpRequest("an amazing new yelp!");
 
@@ -33,7 +38,7 @@ public class WriteNewYelp_Tests : IClassFixture<WriterApiTestFixture>
     [Fact]
     public async Task WriteNewYelp_WithNotExistingUser_MustReturnNotFound()
     {
-        _fixture.Auth("johnmclain");
+        _fixture.Auth(Guid.NewGuid(), "johnmclain");
 
         var request = new CreateYelpRequest("an amazing new yelp!");
 

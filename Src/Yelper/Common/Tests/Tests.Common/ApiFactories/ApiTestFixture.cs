@@ -1,4 +1,6 @@
-﻿using Identity.Application.Common.Auth;
+﻿using EventBus.Events;
+using EventBus.Interfaces;
+using Identity.Application.Common.Auth;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Net.Http.Headers;
@@ -39,13 +41,20 @@ public abstract class ApiTestFixture<TProgram, TDbContext> : IAsyncLifetime
         ApiClient = _apiFactory.CreateClient();
     }
 
-    public void Auth(string at)
+    public void Auth(Guid userId, string at)
     {
         var configuration = (IConfiguration)_apiFactory.Services.GetService(typeof(IConfiguration))!;
 
         var jwtToken = new JwtTokenAuthService()
-             .GenerateToken(Guid.NewGuid(), at, configuration);
+             .GenerateToken(userId, at, configuration);
 
         ApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
     }
+
+    public void LauchIntegrationEvent<T>(T evt) where T : IntegrationEvent
+    {
+        var eventBus = (IEventBus)_apiFactory.Services.GetService(typeof(IEventBus))!;
+        eventBus.Publish(evt);
+    }
 }
+
