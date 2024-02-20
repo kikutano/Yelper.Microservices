@@ -1,5 +1,5 @@
 # Yelper.Microservices
-Yelper is a Twitter clone, with basic features. This project is a **proof of concept**, **an exercise** on **Microservices Architectures** and best pratices. It's *intentionally over-engineered* sometime, as I said, it's an exercise. This project is ispired from (eShopContainer)[https://github.com/dotnet/eShop], my goal is to apply **Clean Architecture** and **DDD patterns** and understand how they fit on a real project. 
+Yelper is a Twitter clone, with basic features. This project is a **proof of concept**, **an exercise** on **Microservices Architectures** and best pratices. It's *intentionally over-engineered* sometime, as I said, it's an exercise. This project is ispired from [eShopContainer](https://github.com/dotnet/eShop), my goal is to apply **Clean Architecture** and **DDD patterns** and understand how they fit on a real project. 
 
 Yelper will be improved over the time, with new features and principle applications. So please feel free to give me some feedbacks.
 
