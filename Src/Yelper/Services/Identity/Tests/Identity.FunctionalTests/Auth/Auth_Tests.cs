@@ -1,15 +1,17 @@
 ﻿using Identity.Application.Auth.Commands;
 using Identity.Application.Auth.Common;
+using Identity.Application.Common.Persistence;
 using Identity.Application.Users.Commands;
 using Identity.Application.Users.Common;
 using Identity.FunctionalTests.Common;
 using System.Net;
 using System.Net.Http.Headers;
+using Tests.Common.ApiFactories;
 using Tests.Common.Networking;
 
 namespace Identity.FunctionalTests.Auth;
 
-[Collection(nameof(ShareSameDatabaseInstance))]
+[Collection(nameof(ShareSameDatabaseInstance<Program, IdentityDbContext>))]
 public class Auth_Tests : IClassFixture<IdentityApiTestFixture>
 {
     private readonly IdentityApiTestFixture _fixture;

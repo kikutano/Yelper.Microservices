@@ -1,12 +1,14 @@
-﻿using Identity.Application.Users.Commands;
+﻿using Identity.Application.Common.Persistence;
+using Identity.Application.Users.Commands;
 using Identity.Application.Users.Common;
 using Identity.FunctionalTests.Common;
 using System.Net;
+using Tests.Common.ApiFactories;
 using Tests.Common.Networking;
 
 namespace Identity.FunctionalTests.Users;
 
-[Collection(nameof(ShareSameDatabaseInstance))]
+[Collection(nameof(ShareSameDatabaseInstance<Program, IdentityDbContext>))]
 public class CreateNewUser_Tests : IClassFixture<IdentityApiTestFixture>
 {
     private readonly IdentityApiTestFixture Fixture;

@@ -1,14 +1,16 @@
-﻿using Identity.Application.Followings.Common;
+﻿using Identity.Application.Common.Persistence;
+using Identity.Application.Followings.Common;
 using Identity.Application.Users.Commands;
 using Identity.Application.Users.Common;
 using Identity.Contracts.Followings;
 using Identity.FunctionalTests.Common;
 using System.Net;
+using Tests.Common.ApiFactories;
 using Tests.Common.Networking;
 
 namespace Identity.FunctionalTests.Followings;
 
-[Collection(nameof(ShareSameDatabaseInstance))]
+[Collection(nameof(ShareSameDatabaseInstance<Program, IdentityDbContext>))]
 public class UnfollowUser_Tests : IClassFixture<IdentityApiTestFixture>
 {
     private readonly IdentityApiTestFixture _fixture;

@@ -1,14 +1,16 @@
-﻿using Identity.Application.Followers.Common;
+﻿using Identity.Application.Common.Persistence;
+using Identity.Application.Followers.Common;
 using Identity.Application.Users.Commands;
 using Identity.Application.Users.Common;
 using Identity.Contracts.Followings;
 using Identity.FunctionalTests.Common;
 using System.Net;
+using Tests.Common.ApiFactories;
 using Tests.Common.Networking;
 
 namespace Identity.FunctionalTests.Followers;
 
-[Collection(nameof(ShareSameDatabaseInstance))]
+[Collection(nameof(ShareSameDatabaseInstance<Program, IdentityDbContext>))]
 public class GetUserFollowers_Tests : IClassFixture<IdentityApiTestFixture>
 {
     private readonly IdentityApiTestFixture _fixture;
