@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Writer.Application.Common.Persistence;
 
@@ -11,9 +12,11 @@ using Writer.Application.Common.Persistence;
 namespace Writer.Application.Migrations
 {
     [DbContext(typeof(WriterDbContext))]
-    partial class WriterDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240220075459_add-createdat-to-yelps")]
+    partial class addcreatedattoyelps
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

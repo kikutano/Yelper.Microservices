@@ -17,7 +17,7 @@ public abstract class ApiTestFixture<TProgram, TDbContext> : IAsyncLifetime
 
     private readonly MsSqlContainer _msSqlContainer = null!;
     private readonly RabbitMqContainer _rabbitMqContainer = null!;
-    private readonly ApiFactory<TProgram, TDbContext> _apiFactory;
+    public readonly ApiFactory<TProgram, TDbContext> _apiFactory;
 
     public ApiTestFixture()
     {
@@ -51,7 +51,7 @@ public abstract class ApiTestFixture<TProgram, TDbContext> : IAsyncLifetime
         ApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
     }
 
-    public void LauchIntegrationEvent<T>(T evt) where T : IntegrationEvent
+    public void TriggerIntegrationEvent<T>(T evt) where T : IntegrationEvent
     {
         var eventBus = (IEventBus)_apiFactory.Services.GetService(typeof(IEventBus))!;
         eventBus.Publish(evt);
