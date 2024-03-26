@@ -1,8 +1,10 @@
-﻿using MediatR;
+﻿using EventBus.Interfaces;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Net;
+using Writer.API.IntegrationEvents.Sender;
 using Writer.Application.Writers.Commands;
 using Writer.Contracts.Writes;
 using YelperCommon;
@@ -13,10 +15,12 @@ namespace Writer.API.Controllers;
 public class WriterController : YelperApiController
 {
     private readonly ISender _sender;
+    private readonly IEventBus _eventBus;
 
-    public WriterController(ISender sender)
+    public WriterController(ISender sender, IEventBus eventBus)
     {
         _sender = sender;
+        _eventBus = eventBus;
     }
 
     [HttpPost]
@@ -28,8 +32,15 @@ public class WriterController : YelperApiController
         var commandResult = await _sender
             .Send(new CreateYelpCommand(RequesterUserId, request.Text));
 
-        return commandResult.Match(
-            commandResult => Ok(),
-            errors => Problem(errors));
+        if (!commandResult.IsError)
+        {
+            _eventBus.Publish(new YelpCreatedIntegrationEvent(
+                UserId: RequesterUserId,
+                Text: request.Text));
+
+            return Ok(commandResult.Value);
+        }
+
+        return Problem(commandResult.Errors);
     }
 }
