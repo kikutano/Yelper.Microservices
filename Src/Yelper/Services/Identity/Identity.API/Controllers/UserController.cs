@@ -1,6 +1,6 @@
 ﻿using ErrorOr;
 using EventBus.Interfaces;
-using Identity.API.IntegrationEvents.Users;
+using Identity.API.IntegrationEvents.Sender.Users;
 using Identity.Application.Users.Commands;
 using Identity.Application.Users.Common;
 using Identity.Application.Users.Queries;
