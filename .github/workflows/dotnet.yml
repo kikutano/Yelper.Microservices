@@ -29,5 +29,5 @@ jobs:
       run: dotnet build ./Src/Yelper/Yelper.sln --configuration Release --no-restore
     - name: Test
       run: |
-        cd ./Src/Yelper/Tests
+        cd ./Src/Yelper/Services/Identity/Tests/Identity.FunctionalTests
         dotnet test --no-build --verbosity normal
