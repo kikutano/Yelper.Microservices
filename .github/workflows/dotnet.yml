@@ -27,8 +27,8 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Restore dependencies
-      run: dotnet restore ./Yelper.sln
+      run: dotnet restore ./Src/Yelper/Yelper.sln
     - name: Build
-      run: dotnet build ./Yelper.sln --configuration Release --no-restore
+      run: dotnet build ./Src/Yelper/Yelper.sln --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
