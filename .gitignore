@@ -61,3 +61,5 @@
 /Src/Yelper/Common/Services/AuthService/bin/Debug/net8.0
 /Src/Yelper/Services/Reader/Reader.API/obj
 /Src/Yelper/Services/Reader/Reader.API/bin/Debug/net8.0
+/Src/Yelper/Services/Identity/Tests/Indentity.UnitTests/bin/Debug/net8.0
+/Src/Yelper/Services/Identity/Tests/Indentity.UnitTests/obj
