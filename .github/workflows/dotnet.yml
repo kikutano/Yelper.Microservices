@@ -30,4 +30,4 @@ jobs:
     - name: Test
       run: |
         cd ./Src/Yelper/Services/Identity/Tests/Identity.FunctionalTests
-        dotnet test --no-build --verbosity normal
+        dotnet test --no-build --verbosity diagnostic
