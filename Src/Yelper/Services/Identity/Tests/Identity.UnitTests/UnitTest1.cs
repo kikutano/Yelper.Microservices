@@ -1,4 +1,4 @@
-namespace Indentity.UnitTests;
+namespace Identity.UnitTests;
 
 public class UnitTest1
 {
