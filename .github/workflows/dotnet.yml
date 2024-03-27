@@ -30,4 +30,4 @@ jobs:
     - name: Test
       run: |
         cd ./Src/Yelper/Services/Identity/Tests/Identity.FunctionalTests
-        dotnet test --no-build --verbosity detailed
+        dotnet test YourProjectName.csproj --no-build --verbosity detailed
