@@ -13,40 +13,40 @@ namespace Identity.FunctionalTests.Followings;
 [Collection(nameof(ShareSameDatabaseInstance<Program, IdentityDbContext>))]
 public class UnfollowUser_Tests : IClassFixture<IdentityApiTestFixture>
 {
-	private readonly IdentityApiTestFixture _fixture;
+    private readonly IdentityApiTestFixture _fixture;
 
-	public UnfollowUser_Tests(IdentityApiTestFixture fixture)
-	{
-		_fixture = fixture;
-	}
+    public UnfollowUser_Tests(IdentityApiTestFixture fixture)
+    {
+        _fixture = fixture;
+    }
 
-	[Fact(Skip = "yes")]
-	public async Task UnfollowUser_EnsureCorrectness()
-	{
-		//act
-		var createJohnUserRequest = new CreateUserCommand("johnmclean", "John McLean");
-		var createLoydUserRequest = new CreateUserCommand("loydchristmas", "Loyd Christmas");
+    [Fact]
+    public async Task UnfollowUser_EnsureCorrectness()
+    {
+        //act
+        var createJohnUserRequest = new CreateUserCommand("johnmclean", "John McLean");
+        var createLoydUserRequest = new CreateUserCommand("loydchristmas", "Loyd Christmas");
 
-		var createJohnUserResponse = await RestApiCaller
-			.PostAsync<UserCreatedResult>(_fixture.ApiClient, "api/v1/user", createJohnUserRequest);
-		var createLoydUserResponse = await RestApiCaller
-			.PostAsync<UserCreatedResult>(_fixture.ApiClient, "api/v1/user", createLoydUserRequest);
+        var createJohnUserResponse = await RestApiCaller
+            .PostAsync<UserCreatedResult>(_fixture.ApiClient, "api/v1/user", createJohnUserRequest);
+        var createLoydUserResponse = await RestApiCaller
+            .PostAsync<UserCreatedResult>(_fixture.ApiClient, "api/v1/user", createLoydUserRequest);
 
-		await _fixture.Auth("johnmclean", createJohnUserResponse.Value.AccessCode);
+        await _fixture.Auth("johnmclean", createJohnUserResponse.Value.AccessCode);
 
-		//arrange
-		var followRequest = new FollowUserRequest(createLoydUserResponse.Value.User.UserId);
+        //arrange
+        var followRequest = new FollowUserRequest(createLoydUserResponse.Value.User.UserId);
 
-		await RestApiCaller.PostAsync(_fixture.ApiClient, $"api/v1/following", followRequest);
+        await RestApiCaller.PostAsync(_fixture.ApiClient, $"api/v1/following", followRequest);
 
-		var unfollowRequestResponse = await RestApiCaller
-			.DeleteAsync(_fixture.ApiClient, $"api/v1/following/{createLoydUserResponse.Value.User.UserId}");
+        var unfollowRequestResponse = await RestApiCaller
+            .DeleteAsync(_fixture.ApiClient, $"api/v1/following/{createLoydUserResponse.Value.User.UserId}");
 
-		var followingsGetResponse = await RestApiCaller
-			.GetAsync<List<UserFollowingResult>>(_fixture.ApiClient, $"api/v1/following/johnmclean");
+        var followingsGetResponse = await RestApiCaller
+            .GetAsync<List<UserFollowingResult>>(_fixture.ApiClient, $"api/v1/following/johnmclean");
 
-		//assert
-		Assert.Equal(HttpStatusCode.OK, unfollowRequestResponse.Response.StatusCode);
-		Assert.Empty(followingsGetResponse.Value);
-	}
+        //assert
+        Assert.Equal(HttpStatusCode.OK, unfollowRequestResponse.Response.StatusCode);
+        Assert.Empty(followingsGetResponse.Value);
+    }
 }
