@@ -74,7 +74,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reader.API", "Services\Read
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.UnitTests", "Services\Identity\Tests\Identity.UnitTests\Identity.UnitTests.csproj", "{2CF8CCC6-7552-44C8-A53C-43CAAB60F943}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Writer.FunctionalTests", "Services\Writer\Tests\Writer.FunctionalTests\Writer.FunctionalTests.csproj", "{0E262760-04EC-4AC8-A645-72A724920BEA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Writer.FunctionalTests", "Services\Writer\Tests\Writer.FunctionalTests\Writer.FunctionalTests.csproj", "{1706D6DA-EEC5-42EB-86EF-575D6E4FD078}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -162,10 +162,10 @@ Global
 		{2CF8CCC6-7552-44C8-A53C-43CAAB60F943}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CF8CCC6-7552-44C8-A53C-43CAAB60F943}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CF8CCC6-7552-44C8-A53C-43CAAB60F943}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0E262760-04EC-4AC8-A645-72A724920BEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0E262760-04EC-4AC8-A645-72A724920BEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0E262760-04EC-4AC8-A645-72A724920BEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0E262760-04EC-4AC8-A645-72A724920BEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1706D6DA-EEC5-42EB-86EF-575D6E4FD078}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1706D6DA-EEC5-42EB-86EF-575D6E4FD078}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1706D6DA-EEC5-42EB-86EF-575D6E4FD078}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1706D6DA-EEC5-42EB-86EF-575D6E4FD078}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -202,7 +202,7 @@ Global
 		{CD89D1F3-F9AF-47BE-95F4-EC6B1FB4B0BC} = {C7FA2D4C-C614-412C-BE15-20EEC520C8EB}
 		{A431D9A9-5726-4F9D-AE77-9F9899D8E384} = {08AB57A1-DAB9-4341-8EBC-70CED487A41D}
 		{2CF8CCC6-7552-44C8-A53C-43CAAB60F943} = {E9845608-BEA0-4E54-B09E-0ACB6030ACE0}
-		{0E262760-04EC-4AC8-A645-72A724920BEA} = {68BA0C5C-2629-4A62-9F62-82FB29C7B978}
+		{1706D6DA-EEC5-42EB-86EF-575D6E4FD078} = {68BA0C5C-2629-4A62-9F62-82FB29C7B978}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {779B06E6-8E8A-49DB-B03C-8487C9BB72B1}

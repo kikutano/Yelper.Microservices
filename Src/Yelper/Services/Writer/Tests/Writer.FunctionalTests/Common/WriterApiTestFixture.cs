@@ -1,4 +1,5 @@
-﻿using Tests.Common.ApiFactories;
+﻿using Microsoft.VisualStudio.TestPlatform.TestHost;
+using Tests.Common.ApiFactories;
 using Writer.Application.Common.Persistence;
 
 namespace Writer.FunctionalTests.Common;
