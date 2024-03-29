@@ -31,7 +31,11 @@ jobs:
       run: |
         cd ./Src/Yelper/Services/Identity/Tests/Identity.UnitTests
         dotnet test --verbosity normal
-    - name: Funcional Tests
+    - name: Identity Funcional Tests
       run: |
         cd ./Src/Yelper/Services/Identity/Tests/Identity.FunctionalTests
+        dotnet test --verbosity normal
+    - name: Writer Funcional Tests
+      run: |
+        cd ./Src/Yelper/Services/Writer/Tests/Writer.FunctionalTests
         dotnet test --verbosity normal
