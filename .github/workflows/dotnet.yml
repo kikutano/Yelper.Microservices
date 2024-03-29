@@ -27,7 +27,11 @@ jobs:
       run: dotnet restore ./Src/Yelper/Yelper.sln
     - name: Build
       run: dotnet build ./Src/Yelper/Yelper.sln --configuration Release --no-restore
-    - name: Test
+    - name: Unit Tests
       run: |
         cd ./Src/Yelper/Services/Identity/Tests/Identity.UnitTests
+        dotnet test --verbosity normal
+    - name: Funcional Tests
+      run: |
+        cd ./Src/Yelper/Services/Identity/Tests/Identity.FunctionalTests
         dotnet test --verbosity normal
