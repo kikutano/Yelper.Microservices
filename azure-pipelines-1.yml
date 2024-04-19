@@ -13,16 +13,16 @@ steps:
 - task: DotNetCoreCLI@2
   name: Restore
   inputs:
-    projects: 'path/to/Yelper.sln'
+    projects: '**/*.csproj'
     command: 'restore'
 - task: DotNetCoreCLI@2
   name: Build
   inputs:
+    projects: '**/*.csproj'
     command: 'build'
-    projects: 'path/to/Yelper.sln'
 - task: DotNetCoreCLI@2
-  name: Tests
+  name: Test
   inputs:
+    projects: '**/*.csproj'
     command: 'test'
-    projects: 'path/to/Yelper.sln'
     
