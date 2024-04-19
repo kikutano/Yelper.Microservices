@@ -14,3 +14,10 @@ steps:
   inputs:
     projects: '**/*.csproj'
     command: 'restore'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    
