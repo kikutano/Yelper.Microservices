@@ -1,16 +1,18 @@
 [![.NET](https://github.com/kikutano/Yelper.Microservices/actions/workflows/dotnet.yml/badge.svg)](https://github.com/kikutano/Yelper.Microservices/actions/workflows/dotnet.yml)
 
 # Yelper.Microservices
-Yelper is a Twitter clone, with basic features. This project is a **proof of concept**, **an exercise** on **Microservices Architectures** and best pratices. It's *intentionally over-engineered* sometime, as I said, it's an exercise. This project is ispired from [eShopContainer](https://github.com/dotnet/eShop), my goal is to apply **Clean Architecture** and **DDD patterns** and understand how they fit on a real project. 
-
-Yelper will be improved over the time, with new features and principle applications. So please feel free to give me some feedbacks.
-
-## Current release
-1.0.0
+**Yelper** is a "Twitter Clone **Playground**" (yeah, of course!). Ad I said, this project is **my playground to experiment** patterns, best practices, technologies and more. So, a lot of over-engineering here, fancy solutions and experimentations.
 
 ## Overview
-Yelper is a Twitter clone with **3 Microservices** and a **Message Broker (RabbitMq)**.
+There are 3 services that comunicate using RabbitMq and a Docker composite to run everything in local. You must install Docker to run the entire solution and tests!
 
+## Services
 - **Identity**, to create and auth users.
 - **Writer**, to create new Yelps (tweet).
 - **Reader**, to retrieve Yelps from users for your profile.
+
+## Automated Tests
+Yelper.Microservices use a real database to run the tests. So install Docker if you want run the test correctly.
+
+## More
+More updates are coming..
