@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Reader.FunctionalTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+265ff00a737f040cdfe22d67b12d67fa3d20bc2b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d1e808ab645d238bb859fdd9a8183cb08c06cec7")]
 [assembly: System.Reflection.AssemblyProductAttribute("Reader.FunctionalTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Reader.FunctionalTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

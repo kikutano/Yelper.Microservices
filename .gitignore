@@ -72,3 +72,4 @@
 /Src/Yelper/Services/Reader/Reader.Application/obj
 /Src/Yelper/Services/Reader/Reader.Application/bin/Debug/net8.0
 /Src/Yelper/Services/Reader/Reader.Infrastructure/bin/Debug/net8.0
+/Src/Yelper/Services/Reader/Tests/Reader.FunctionalTests/bin
