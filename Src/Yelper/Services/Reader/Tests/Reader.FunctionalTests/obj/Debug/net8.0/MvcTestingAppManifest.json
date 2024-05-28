@@ -1,9 +1,0 @@
-{
-  "AuthService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\gaetano.lenoci\\source\\repos\\Yelper.Microservices\\Src\\Yelper\\Common\\Services\\AuthService",
-  "EventBus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\gaetano.lenoci\\source\\repos\\Yelper.Microservices\\Src\\Yelper\\Common\\EventBus\\EventBus",
-  "RabbitMQEventBus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\gaetano.lenoci\\source\\repos\\Yelper.Microservices\\Src\\Yelper\\Common\\EventBus\\RabbitMQEventBus",
-  "Reader.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\gaetano.lenoci\\source\\repos\\Yelper.Microservices\\Src\\Yelper\\Services\\Reader\\Reader.API",
-  "Reader.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\gaetano.lenoci\\source\\repos\\Yelper.Microservices\\Src\\Yelper\\Services\\Reader\\Reader.Application",
-  "Reader.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\gaetano.lenoci\\source\\repos\\Yelper.Microservices\\Src\\Yelper\\Services\\Reader\\Reader.Infrastructure",
-  "Tests.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\gaetano.lenoci\\source\\repos\\Yelper.Microservices\\Src\\Yelper\\Common\\Tests\\Tests.Common"
-}

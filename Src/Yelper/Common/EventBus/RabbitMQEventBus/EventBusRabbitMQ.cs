@@ -47,8 +47,6 @@ public class EventBusRabbitMQ : IEventBus
             routingKey: eventName,
             mandatory: true,
             body: body);
-
-        _channel.WaitForConfirms();
     }
 
     public void Subscribe<T_Event, T_Handler>()
