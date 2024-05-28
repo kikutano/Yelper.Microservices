@@ -25,7 +25,7 @@ public class GetTrendsEndpointTests : IClassFixture<ReaderApiTestFixture>
             new NewYelpIntegrationEvent(
                 userId, "johnmclean", "John McLean", "av.jpg", "amazing content"));
 
-        Thread.Sleep(2000);
+        Thread.Sleep(1000);
 
         var readerResponse = await RestApiCaller
             .GetAsync<List<YelpItem>>(_fixture.ApiClient, "/trends");
