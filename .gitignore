@@ -67,3 +67,8 @@
 /Src/Yelper/Services/Identity/Tests/Identity.UnitTests/obj
 /Src/Yelper/Services/Writer/Tests/Writer.FunctionalTests/bin/Debug/net8.0
 /Src/Yelper/Services/Writer/Tests/Writer.FunctionalTests/obj
+/Src/Yelper/Services/Reader/Reader.API/Reader.Application/obj
+/Src/Yelper/Services/Reader/Reader.Infrastructure/obj
+/Src/Yelper/Services/Reader/Reader.Application/obj
+/Src/Yelper/Services/Reader/Reader.Application/bin/Debug/net8.0
+/Src/Yelper/Services/Reader/Reader.Infrastructure/bin/Debug/net8.0

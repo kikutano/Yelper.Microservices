@@ -1,4 +1,4 @@
-@Reader.API_HostAddress = http://localhost:5194
+@Reader.API_HostAddress = http://localhost:5218
 
 GET {{Reader.API_HostAddress}}/weatherforecast/
 Accept: application/json

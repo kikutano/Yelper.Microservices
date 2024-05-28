@@ -30,6 +30,20 @@ services:
    - writer.sqldata
    - rabbitmq
 
+ reader.api:
+  image: ${DOCKER_REGISTRY-}readerapi
+  build:
+   context: .
+   dockerfile: Services/Reader/Reader.API/Dockerfile
+  ports:
+  - "5300:80"
+  - "5301:443" 
+ redis:
+   image: redis
+   container_name: yelper.api.redis
+   ports:
+   - "6379:6379"
+
  rabbitmq: # login guest:guest
   image: rabbitmq:3-management
   hostname: "rabbitmq"

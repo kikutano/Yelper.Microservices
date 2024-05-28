@@ -14,5 +14,9 @@ There are 3 services that comunicate using RabbitMq and a Docker composite to ru
 ## Automated Tests
 Yelper.Microservices use a real database to run the tests. So install Docker if you want run the test correctly.
 
+# Automated Tests with TestContainers
+- SqlServer
+- Redis
+
 ## More
 More updates are coming..
