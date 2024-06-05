@@ -20,7 +20,7 @@ public class EventBusRabbitMQ : IEventBus
         Connect(connectionString);
     }
 
-    private void OnMessageReceivedHandler(object? sender, BasicDeliverEventArgs e)
+    protected virtual void OnMessageReceivedHandler(object? sender, BasicDeliverEventArgs e)
     {
         var eventName = e.RoutingKey;
         var content = Encoding.UTF8.GetString(e.Body.Span);

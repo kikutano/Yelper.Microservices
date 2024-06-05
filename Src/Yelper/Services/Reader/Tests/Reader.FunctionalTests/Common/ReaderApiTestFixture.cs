@@ -2,6 +2,7 @@
 using EventBus.Interfaces;
 using Testcontainers.RabbitMq;
 using Testcontainers.Redis;
+using Tests.Common.EventBus;
 
 namespace Reader.FunctionalTests.Common;
 
@@ -34,9 +35,9 @@ public class ReaderApiTestFixture : IAsyncLifetime
         ApiClient = _apiFactory.CreateClient();
     }
 
-    public void TriggerIntegrationEvent<T>(T evt) where T : IntegrationEvent
+    public async Task TriggerIntegrationEvent<T>(T evt) where T : IntegrationEvent
     {
-        var eventBus = (IEventBus)_apiFactory.Services.GetService(typeof(IEventBus))!;
-        eventBus.Publish(evt);
+        var eventBus = (AwaitableEventBusRabbitMQ)_apiFactory.Services.GetService(typeof(IEventBus))!;
+        await eventBus.Publish(evt);
     }
 }

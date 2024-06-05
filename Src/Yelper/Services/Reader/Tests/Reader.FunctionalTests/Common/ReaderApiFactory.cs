@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using RabbitMQEventBus;
 using Testcontainers.RabbitMq;
 using Testcontainers.Redis;
+using Tests.Common.EventBus;
 
 namespace Reader.FunctionalTests.Common;
 
@@ -54,7 +55,7 @@ public class ReaderApiFactory<TProgram> : WebApplicationFactory<Program>
     private void ConfigureEventBusUsingRabbitMqOnDockerContainer(IServiceCollection services)
     {
         var connectionString = _rabbitMqContainer.GetConnectionString();
-        var rabbitMq = new EventBusRabbitMQ(new InMemoryEventBusSubscriptionsManager(), connectionString);
+        var rabbitMq = new AwaitableEventBusRabbitMQ(new InMemoryEventBusSubscriptionsManager(), connectionString);
 
         services.RemoveAll<IEventBus>();
         services.AddSingleton<IEventBus>(rabbitMq);
