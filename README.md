@@ -18,5 +18,8 @@ Yelper.Microservices use a real database to run the tests. So install Docker if 
 - SqlServer
 - Redis
 
+# Design decisions
+Entity Framework into Application Layer and not into the infrastructure..
+
 ## More
 More updates are coming..
