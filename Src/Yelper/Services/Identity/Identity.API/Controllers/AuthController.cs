@@ -43,4 +43,11 @@ public class AuthController : YelperApiController
     {
         return Ok();
     }
+
+    [HttpGet]
+    [Route("healthcheck")]
+    public IActionResult HealthCheck()
+    {
+        return Ok("hello world!");
+    }
 }

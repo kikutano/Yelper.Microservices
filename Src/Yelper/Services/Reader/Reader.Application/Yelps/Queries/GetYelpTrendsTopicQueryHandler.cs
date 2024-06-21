@@ -25,8 +25,6 @@ public class GetYelpTrendsTopicQueryHandler : IRequestHandler<GetYelpTrendsTopic
 
         var yelpItem = JsonSerializer.Deserialize<YelpItem>(result!);
 
-
-
         return new List<YelpItem>() { yelpItem! };
     }
 }
