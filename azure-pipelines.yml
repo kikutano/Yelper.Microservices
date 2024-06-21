@@ -9,11 +9,35 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+ buildConfiguration: 'Release'
+
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '8.x'
+- script: |
+    dotnet build --configuration $(buildConfiguration)
+  displayName: 'Build project'
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    dotnet test --configuration $(buildConfiguration)
+  displayName: 'Run tests'
+
+- script: |
+    dotnet publish --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
+  displayName: 'Publish project'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'YOUR_AZURE_SERVICE_CONNECTION'
+    appType: 'webApp'
+    appName: 'YOUR_WEB_APP_NAME'
+    package: '$(Build.ArtifactStagingDirectory)'
