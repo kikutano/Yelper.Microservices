@@ -1,8 +1,3 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
 
@@ -39,5 +34,5 @@ steps:
   inputs:
     azureSubscription: 'YOUR_AZURE_SERVICE_CONNECTION'
     appType: 'webApp'
-    appName: 'YOUR_WEB_APP_NAME'
+    appName: 'app-dev-we-yelper-identity-01'
     package: '$(Build.ArtifactStagingDirectory)'
