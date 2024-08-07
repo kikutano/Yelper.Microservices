@@ -75,3 +75,17 @@
 /Src/Yelper/Services/Reader/Tests/Reader.FunctionalTests/bin
 /Src/Yelper/Services/Reader/Tests/Reader.FunctionalTests/bin
 /Src/Yelper/Services/Reader/Tests/Reader.FunctionalTests/obj
+/Src/Yelper/Services/Identity/Identity.API/bin/Release/net8.0
+/Src/Yelper/Services/Identity/Identity.API/Properties/PublishProfiles
+/Src/Yelper/Services/Identity/Identity.API/Properties/ServiceDependencies/app-dev-we-yelper-identity-01 - Zip Deploy
+/Src/Yelper/Services/Identity/Identity.Application/bin/Release/net8.0
+/Src/Yelper/Services/Writer/Tests/Writer.FunctionalTests/bin/Release/net8.0
+/Src/Yelper/Services/Identity/Identity.Infrastructure/bin/Release/net8.0
+/Src/Yelper/Services/Identity/Tests/Identity.FunctionalTests/bin/Release/net8.0
+/Src/Yelper/Services/Identity/Identity.Domain/bin/Release/net8.0
+/Src/Yelper/Services/Identity/Identity.Contracts/bin/Release/net8.0
+/Src/Yelper/Common/Services/AuthService/bin/Release/net8.0
+/Src/Yelper/Common/EventBus/EventBus/bin/Release/net7.0
+/Src/Yelper/Common/EventBus/RabbitMQEventBus/bin/Release/net7.0
+/Src/Yelper/Common/DomainDrivenDesign/DomainDrivenDesign/bin/Release/net7.0
+/Src/Yelper/Common/API/YelperCommon/bin/Release/net8.0
