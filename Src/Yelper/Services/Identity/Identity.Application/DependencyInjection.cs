@@ -29,10 +29,23 @@ public static class DependencyInjection
         services.AddDbContext<IdentityDbContext>(
             options =>
             {
-                var connectionString = configuration["ConnectionStrings:Database"];
+                string connectionString = configuration["ConnectionStrings:Database"]!;
 
                 options.UseSqlServer(connectionString);
                 options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
             });
+
+        bool applyMigration = false;
+        bool.TryParse(configuration["Database:ApplyMigration"]!, out applyMigration);
+        if (applyMigration)
+        {
+            using (var serviceProvider = services.BuildServiceProvider())
+            {
+                using (var context = serviceProvider.GetRequiredService<IdentityDbContext>())
+                {
+                    context.Database.Migrate();
+                }
+            }
+        }
     }
 }

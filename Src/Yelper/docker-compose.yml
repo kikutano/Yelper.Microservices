@@ -11,6 +11,7 @@ services:
    - "5101:443"
   environment:
     - ConnectionStrings__Database=Data Source=identity.api.mssql;User ID=sa;Password=w3rystr0ngp4ss!;Encrypt=False;Trust Server Certificate=False;
+    - Database__ApplyMigration=true 
     - rabbitmq
   depends_on:
     - identity.sqldata
@@ -18,9 +19,8 @@ services:
  identity.sqldata:
     image: mcr.microsoft.com/mssql/server:2019-latest
     container_name: "identity.api.mssql"
-    ##command: ["dotnet", "ef", "database", "update", "--no-build", "--project", "MyApp.csproj"]
     environment:
-        #- SA_PASSWORD=w3rystr0ngp4ss!
+        - SA_PASSWORD=w3rystr0ngp4ss!
         - ACCEPT_EULA=Y
     ports:
         - "5434:1433"
