@@ -10,12 +10,21 @@ services:
    - "5100:80"
    - "5101:443"
   environment:
-    - ConnectionString=Server=identity.sqldata;Database=Yelper.Services.IdentityDb;User Id=sa;Password=SA_PASSWORD
+    - ConnectionStrings__Database=Data Source=identity.api.mssql;User ID=sa;Password=w3rystr0ngp4ss!;Encrypt=False;Trust Server Certificate=False;
+    - rabbitmq
   depends_on:
     - identity.sqldata
-    - rabbitmq
-  #command: ["dotnet", "ef", "database update"]
- 
+
+ identity.sqldata:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: "identity.api.mssql"
+    ##command: ["dotnet", "ef", "database", "update", "--no-build", "--project", "MyApp.csproj"]
+    environment:
+        #- SA_PASSWORD=w3rystr0ngp4ss!
+        - ACCEPT_EULA=Y
+    ports:
+        - "5434:1433"
+
  writer.api:
   image: ${DOCKER_REGISTRY-}writerapi
   build:
@@ -56,14 +65,6 @@ services:
     - "25672:25672"
     - "15671:15671"
     - "15672:15672"
-
- identity.sqldata:
-    image: mcr.microsoft.com/mssql/server:2019-latest
-    environment:
-        - SA_PASSWORD=w3rystr0ngp4ss!
-        - ACCEPT_EULA=Y
-    ports:
-        - "5434:1433"
 
  writer.sqldata:
     image: mcr.microsoft.com/mssql/server:2019-latest

@@ -29,9 +29,9 @@ public static class DependencyInjection
         services.AddDbContext<IdentityDbContext>(
             options =>
             {
-                var connectionString = configuration["ConnectionStrings::MyDatabase"];
+                var connectionString = configuration["ConnectionStrings:Database"];
 
-                options.UseSqlServer(configuration.GetConnectionString("db-docker"));
+                options.UseSqlServer(connectionString);
                 options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
             });
     }
