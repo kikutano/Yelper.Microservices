@@ -1,0 +1,19 @@
+Yelper.BroadcastMessages
+
+Yelper.Identity
+	- GraphQL ?
+	- MSSQL
+	- Logs
+
+Yelper.Writer
+	- MSSQL
+	- Logs
+
+Yelper.Reader
+	- Redis Cache
+
+Yelper.FrontEnd
+	- Angular ?
+
+Yelper.Admin
+	- Use another technologies

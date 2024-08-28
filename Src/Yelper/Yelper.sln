@@ -38,9 +38,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E9845608-BEA0-4E54-B09E-0ACB6030ACE0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BA442EDD-3C4A-4F7E-BD01-350C190BD925}"
-	ProjectSection(SolutionItems) = preProject
-		Todo.txt = Todo.txt
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{7671DB5D-0BC9-4F6F-B76D-0D91E534AF88}"
 EndProject
@@ -82,7 +79,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reader.Infrastructure", "Se
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8D1247CF-18BB-4F6C-9B9E-C33A04711FA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reader.FunctionalTests", "Services\Reader\Tests\Reader.FunctionalTests\Reader.FunctionalTests.csproj", "{2623B0C5-7FD2-458B-A814-AC2218ED6F11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reader.FunctionalTests", "Services\Reader\Tests\Reader.FunctionalTests\Reader.FunctionalTests.csproj", "{2623B0C5-7FD2-458B-A814-AC2218ED6F11}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Http", "Http", "{5ECA0C6B-89BD-41E6-A808-5A044FD00022}"
+	ProjectSection(SolutionItems) = preProject
+		Http\Yelper.Identity.PostmanCollection.json = Http\Yelper.Identity.PostmanCollection.json
+		Http\Yelper.Writer.PostmanCollection.json = Http\Yelper.Writer.PostmanCollection.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Design", "Design", "{9F4E4A6E-0F55-4996-9221-AAC5394E01B6}"
+	ProjectSection(SolutionItems) = preProject
+		Design\ArchitectureOverview.drawio = Design\ArchitectureOverview.drawio
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

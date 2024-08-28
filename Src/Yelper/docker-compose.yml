@@ -1,6 +1,7 @@
 version: '3.4'
 
 services:
+#### IDENTITY ####
  identity.api:
   image: ${DOCKER_REGISTRY-}identityapi
   build:
@@ -25,20 +26,31 @@ services:
     ports:
         - "5434:1433"
 
+#### WRITER ####
  writer.api:
   image: ${DOCKER_REGISTRY-}writerapi
   build:
    context: .
    dockerfile: Services/Writer/Writer.API/Dockerfile
   environment:
-    - ConnectionString=Server=identity.sqldata;Database=Yelper.Services.IdentityDb;User Id=sa;Password=SA_PASSWORD
+    - ConnectionStrings__Database=Data Source=writer.api.mssql;User ID=sa;Password=w3rystr0ngp4ss!;Encrypt=False;Trust Server Certificate=False;
+    - Database__ApplyMigration=true 
   ports:
    - "5200:80"
    - "5201:443"
   depends_on:
    - writer.sqldata
    - rabbitmq
+ writer.sqldata:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: "writer.api.mssql"
+    environment:
+        - SA_PASSWORD=w3rystr0ngp4ss!
+        - ACCEPT_EULA=Y
+    ports:
+        - "5435:1433"
 
+### READER ###
  reader.api:
   image: ${DOCKER_REGISTRY-}readerapi
   build:
@@ -53,6 +65,7 @@ services:
    ports:
    - "6379:6379"
 
+### COMMON ###
  rabbitmq: # login guest:guest
   image: rabbitmq:3-management
   hostname: "rabbitmq"
@@ -65,11 +78,3 @@ services:
     - "25672:25672"
     - "15671:15671"
     - "15672:15672"
-
- writer.sqldata:
-    image: mcr.microsoft.com/mssql/server:2019-latest
-    environment:
-        - SA_PASSWORD=w3rystr0ngp4ss!
-        - ACCEPT_EULA=Y
-    ports:
-        - "5435:1433"

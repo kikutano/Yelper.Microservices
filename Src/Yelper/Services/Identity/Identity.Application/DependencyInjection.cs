@@ -35,6 +35,11 @@ public static class DependencyInjection
                 options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
             });
 
+        ApplyMigration(services, configuration);
+    }
+
+    private static void ApplyMigration(IServiceCollection services, IConfiguration configuration)
+    {
         bool applyMigration = false;
         bool.TryParse(configuration["Database:ApplyMigration"]!, out applyMigration);
         if (applyMigration)
