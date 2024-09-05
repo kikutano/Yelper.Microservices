@@ -12,7 +12,8 @@ services:
    - "5101:443"
   environment:
     - ConnectionStrings__Database=Data Source=identity.api.mssql;User ID=sa;Password=w3rystr0ngp4ss!;Encrypt=False;Trust Server Certificate=False;
-    - Database__ApplyMigration=true 
+    - Database__ApplyMigration=true
+    - Broker__ClientName=identity
     - rabbitmq
   depends_on:
     - identity.sqldata
@@ -35,6 +36,8 @@ services:
   environment:
     - ConnectionStrings__Database=Data Source=writer.api.mssql;User ID=sa;Password=w3rystr0ngp4ss!;Encrypt=False;Trust Server Certificate=False;
     - Database__ApplyMigration=true 
+    - Broker__ClientName=writer
+    - rabbitmq
   ports:
    - "5200:80"
    - "5201:443"
@@ -56,6 +59,8 @@ services:
   build:
    context: .
    dockerfile: Services/Reader/Reader.API/Dockerfile
+  environment:
+   - Broker__ClientName=reader
   ports:
   - "5300:80"
   - "5301:443" 

@@ -1,5 +1,6 @@
 ﻿using EventBus.Events;
 using EventBus.Interfaces;
+using Microsoft.Extensions.Configuration;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
@@ -12,11 +13,16 @@ public class EventBusRabbitMQ : IEventBus
     private IModel _channel = null!;
     private readonly string _queueName = "yelper_queue";
     private readonly string _exchangeName = "yelper_event_bus";
+    private readonly string _clientName = "not_identified_yet";
     private readonly IEventBusSubscriptionsManager _subsManager;
 
-    public EventBusRabbitMQ(IEventBusSubscriptionsManager subsManager, string? connectionString = null)
+    public EventBusRabbitMQ(
+        IConfiguration configuration,
+        IEventBusSubscriptionsManager subsManager,
+        string? connectionString = null)
     {
         _subsManager = subsManager;
+        _clientName = configuration["Broker:ClientName"]!;
         Connect(connectionString);
     }
 
@@ -70,6 +76,7 @@ public class EventBusRabbitMQ : IEventBus
             {
                 HostName = "rabbitmq",
                 Port = 5672,
+                ClientProvidedName = _clientName
             };
 
             if (!string.IsNullOrEmpty(connectionString))
@@ -87,6 +94,7 @@ public class EventBusRabbitMQ : IEventBus
             _channel.QueueDeclare(
                 queue: _queueName,
                 durable: false,
+                autoDelete: false,
                 exclusive: false,
                 arguments: null);
 
@@ -96,7 +104,7 @@ public class EventBusRabbitMQ : IEventBus
 
             _channel.BasicConsume(
                 queue: _queueName,
-                autoAck: false,
+                autoAck: true,
                 consumer: consumer);
         }
         catch (Exception ex)
