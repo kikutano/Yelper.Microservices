@@ -5,18 +5,18 @@ using System.Text.Json;
 
 namespace Reader.API.IntegrationEvents.Receiver.Yelps;
 
-public class NewYelpIntegrationEventHandler : IIntegrationEventHandler
+public class YelpCreatedIntegrationEventHandler : IIntegrationEventHandler
 {
     private readonly IMediator _mediator;
 
-    public NewYelpIntegrationEventHandler(IMediator mediator)
+    public YelpCreatedIntegrationEventHandler(IMediator mediator)
     {
         _mediator = mediator;
     }
 
     public async Task Handle(string plainContent)
     {
-        var integrationEvent = JsonSerializer.Deserialize<NewYelpIntegrationEvent>(plainContent);
+        var integrationEvent = JsonSerializer.Deserialize<YelpCreatedIntegrationEvent>(plainContent);
 
         await _mediator.Send(new AddNewYelpToTrendTopicsCommand(
             integrationEvent!.UserId,

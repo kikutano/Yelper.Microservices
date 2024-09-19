@@ -17,7 +17,6 @@ public class AddNewYelpToTrendTopicCommandHandler : IRequestHandler<AddNewYelpTo
     {
         string content = JsonSerializer.Serialize(request);
 
-
         await _distributedCache.SetStringAsync("trend", content, cancellationToken);
 
         var result = await _distributedCache.GetStringAsync("trend", cancellationToken);

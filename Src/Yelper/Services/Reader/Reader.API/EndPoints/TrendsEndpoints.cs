@@ -7,7 +7,7 @@ public static class TrendsEndpoints
 {
     public static void MapTrendsEndpoints(this WebApplication app)
     {
-        app.MapGet("/trends", async (IMediator mediator)
+        app.MapGet("api/v1/trends", async (IMediator mediator)
             => await mediator.Send(new GetYelpTrendsTopicQuery()));
     }
 }

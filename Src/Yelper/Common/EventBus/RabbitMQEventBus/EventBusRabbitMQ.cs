@@ -11,7 +11,7 @@ namespace RabbitMQEventBus;
 public class EventBusRabbitMQ : IEventBus
 {
     private IModel _channel = null!;
-    private readonly string _queueName = "yelper_queue";
+    private string _queueName = "yelper_queue";
     private readonly string _exchangeName = "yelper_event_bus";
     private readonly string _clientName = "not_identified_yet";
     private readonly IEventBusSubscriptionsManager _subsManager;
@@ -23,6 +23,7 @@ public class EventBusRabbitMQ : IEventBus
     {
         _subsManager = subsManager;
         _clientName = configuration["Broker:ClientName"]!;
+        _queueName = $"yelper_queue_{_clientName}";
         Connect(connectionString);
     }
 

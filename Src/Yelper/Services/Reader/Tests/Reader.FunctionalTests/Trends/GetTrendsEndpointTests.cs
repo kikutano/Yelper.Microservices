@@ -22,7 +22,7 @@ public class GetTrendsEndpointTests : IClassFixture<ReaderApiTestFixture>
         var userId = Guid.NewGuid();
 
         await _fixture.TriggerIntegrationEvent(
-            new NewYelpIntegrationEvent(
+            new YelpCreatedIntegrationEvent(
                 userId, "johnmclean", "John McLean", "av.jpg", "amazing content"));
 
         var readerResponse = await RestApiCaller

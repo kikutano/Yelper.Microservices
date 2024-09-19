@@ -11,7 +11,7 @@ var provider = builder.Services.BuildServiceProvider(); //correggere
 var configuration = provider.GetService<IConfiguration>();
 
 // Add services to the container.
-builder.Services.AddScoped<NewYelpIntegrationEventHandler>();
+builder.Services.AddScoped<YelpCreatedIntegrationEventHandler>();
 
 
 builder.Services.AddControllers();
@@ -27,6 +27,7 @@ builder.Services
 var app = builder.Build();
 
 app.MapTrendsEndpoints();
+app.MapHealthCheckEndpoints();
 
 EventBusSubscriber.SubscribeAllEventBus(app);
 

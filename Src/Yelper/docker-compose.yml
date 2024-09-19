@@ -61,9 +61,14 @@ services:
    dockerfile: Services/Reader/Reader.API/Dockerfile
   environment:
    - Broker__ClientName=reader
+   - Redis__ConnectionString=yelper.api.redis
+   - Redis__InstanceName=Yelper.Reader.Redis
+   - rabbitmq
   ports:
-  - "5300:80"
-  - "5301:443" 
+    - "5300:80"
+    - "5301:443"
+  depends_on:
+    - rabbitmq
  redis:
    image: redis
    container_name: yelper.api.redis

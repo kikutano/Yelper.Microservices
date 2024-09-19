@@ -12,6 +12,6 @@ public static class EventBusSubscriber
             .GetService<IEventBusSubscriptionsManager>()!
             .SetServiceScope(webApplication.Services.CreateScope());
 
-        eventBus.Subscribe<NewYelpIntegrationEvent, NewYelpIntegrationEventHandler>();
+        eventBus.Subscribe<YelpCreatedIntegrationEvent, YelpCreatedIntegrationEventHandler>();
     }
 }
