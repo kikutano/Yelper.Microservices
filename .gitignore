@@ -89,3 +89,5 @@
 /Src/Yelper/Common/EventBus/RabbitMQEventBus/bin/Release/net7.0
 /Src/Yelper/Common/DomainDrivenDesign/DomainDrivenDesign/bin/Release/net7.0
 /Src/Yelper/Common/API/YelperCommon/bin/Release/net8.0
+/Src/Yelper/data
+/Src/Yelper/mongodb_data
