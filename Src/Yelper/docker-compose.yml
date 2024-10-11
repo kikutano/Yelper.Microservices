@@ -63,17 +63,28 @@ services:
    - Broker__ClientName=reader
    - Redis__ConnectionString=yelper.api.redis
    - Redis__InstanceName=Yelper.Reader.Redis
+   - MongoDb__ConnectionString=mongodb://yelper.reader.mongodb:27017
+   - MongoDb__DatabaseName=YelperDb 
    - rabbitmq
   ports:
     - "5300:80"
     - "5301:443"
   depends_on:
     - rabbitmq
+# REDIS
  redis:
    image: redis
    container_name: yelper.api.redis
    ports:
    - "6379:6379"
+# MONGODB
+ mongodb:
+  image: mongodb/mongodb-community-server:latest
+  container_name: yelper.reader.mongodb
+  environment:
+    MONGO_INITDB_DATABASE: YelperDb
+  ports:
+    - 27017:27017
 
 ### COMMON ###
  rabbitmq: # login guest:guest

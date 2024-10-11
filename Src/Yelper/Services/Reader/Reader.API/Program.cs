@@ -27,6 +27,7 @@ builder.Services
 var app = builder.Build();
 
 app.MapTrendsEndpoints();
+app.MapLatestsEndpoints();
 app.MapHealthCheckEndpoints();
 
 EventBusSubscriber.SubscribeAllEventBus(app);

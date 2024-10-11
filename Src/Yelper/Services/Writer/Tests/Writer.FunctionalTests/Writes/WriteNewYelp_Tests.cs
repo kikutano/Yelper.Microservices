@@ -40,7 +40,7 @@ public class WriteNewYelp_Tests : IClassFixture<WriterApiTestFixture>
                 _fixture.ApiClient, $"api/v1/reader/{userId}");
 
         Assert.Equal(HttpStatusCode.OK, readerResponse.Response.StatusCode);
-        Assert.Equal(request.Text, readerResponse.Value.First().Text);
+        Assert.Equal(request.Content, readerResponse.Value.First().Text);
         Assert.True(readerResponse.Value.First().CreationAt > DateTime.UtcNow.AddMinutes(-2));
     }
 
